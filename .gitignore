@@ -1,0 +1,45 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Node.js
+node_modules/
+dist/
+build/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE and editors
+.vscode/
+.idea/
+.antigravity/
+
+# Deployment
+.vercel/
+
+# Certificates and private keys
+*.pem
+*.key
+*.p12
+
+# Logs
+*.log
+
+# Operating system
+.DS_Store
+Thumbs.db

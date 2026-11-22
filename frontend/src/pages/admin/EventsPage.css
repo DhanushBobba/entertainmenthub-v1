@@ -1,0 +1,2175 @@
+.events-page {
+  --ep-muted: #9894ad;
+  color: #f5f3ff;
+  animation: epFadeIn 0.5s ease both;
+}
+
+/* Header */
+
+.ep-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px;
+  margin-bottom: 28px;
+  border: 1px solid #8b5cf633;
+  border-radius: 22px;
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #7c3aed40,
+      transparent 60%
+    ),
+    linear-gradient(135deg, #191329, #11111b);
+}
+
+.ep-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #c4b5fd;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.ep-hero h1 {
+  font-size: clamp(25px, 3vw, 36px);
+  margin: 14px 0 10px;
+  letter-spacing: -1px;
+}
+
+.ep-hero h1 span {
+  background: linear-gradient(
+    90deg,
+    #c4b5fd,
+    #a78bfa,
+    #f0abfc
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ep-hero p {
+  font-size: 14px;
+  color: var(--ep-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* Buttons */
+
+.ep-primary-button,
+.ep-secondary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.ep-primary-button {
+  color: white;
+  border: 1px solid #a78bfa60;
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #6d28d9
+  );
+}
+
+.ep-primary-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px #8b5cf650;
+}
+
+.ep-secondary-button {
+  color: #ddd6fe;
+  background: #201d2c;
+  border: 1px solid #ffffff18;
+}
+
+.ep-secondary-button:hover {
+  background: #302641;
+  border-color: #8b5cf650;
+}
+
+.events-page button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Statistics Cards */
+
+.ep-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.ep-stat-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 150px;
+  padding: 18px;
+  text-align: left;
+  border-radius: 17px;
+  border: 1px solid #ffffff12;
+  background:
+    radial-gradient(
+      ellipse at top right,
+      color-mix(in srgb, var(--accent) 10%, transparent),
+      transparent 70%
+    ),
+    #15131f;
+  color: white;
+  cursor: pointer;
+  animation: epSlideUp 0.55s ease backwards;
+  animation-delay: var(--delay);
+  transition:
+    transform 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.ep-stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--accent);
+  opacity: 0;
+  box-shadow: 0 0 20px var(--accent);
+  transition: opacity 0.3s;
+}
+
+.ep-stat-card.selected {
+  border-color: color-mix(
+    in srgb,
+    var(--accent) 55%,
+    transparent
+  );
+}
+
+/* Card Highlight on Hover */
+
+.ep-stat-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 35px
+    color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.ep-stat-card:hover::before,
+.ep-stat-card.selected::before {
+  opacity: 1;
+}
+
+.ep-stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.ep-stat-icon {
+  display: grid;
+  place-items: center;
+  width: 45px;
+  height: 45px;
+  color: var(--accent);
+  border-radius: 12px;
+  background: color-mix(
+    in srgb,
+    var(--accent) 13%,
+    transparent
+  );
+  transition: 0.3s;
+}
+
+.ep-stat-card:hover .ep-stat-icon {
+  transform: scale(1.12) rotate(-5deg);
+  box-shadow: 0 0 20px
+    color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.ep-stat-arrow {
+  color: #696477;
+  transition: 0.3s ease;
+}
+
+.ep-stat-card:hover .ep-stat-arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+.ep-stat-card > span {
+  display: block;
+  color: #b5b1c8;
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.ep-stat-card > strong {
+  font-size: 30px;
+}
+
+/* Search and Filters */
+
+.ep-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 18px;
+  margin-bottom: 28px;
+  background: #15131f;
+  border: 1px solid #ffffff12;
+  border-radius: 15px;
+}
+
+.ep-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  min-width: 180px;
+  padding: 12px;
+  background: #100e18;
+  border: 1px solid #ffffff18;
+  border-radius: 10px;
+  color: #9894ad;
+  transition: 0.3s ease;
+}
+
+.ep-search:focus-within {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px #8b5cf615;
+}
+
+.ep-search input {
+  width: 100%;
+  min-width: 0;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 13px;
+}
+
+.ep-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ep-filters select {
+  padding: 12px;
+  border: 1px solid #ffffff18;
+  border-radius: 9px;
+  background: #201c2b;
+  color: #ddd6fe;
+  font-size: 12px;
+  cursor: pointer;
+  outline: none;
+}
+
+.ep-filters select:focus {
+  border-color: #a78bfa;
+}
+
+.ep-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 23px;
+}
+
+.ep-section-heading h2 {
+  font-size: 22px;
+  margin: 0;
+}
+
+.ep-section-heading > span {
+  font-size: 12px;
+  padding: 7px 12px;
+  color: #c4b5fd;
+  background: #8b5cf615;
+  border: 1px solid #8b5cf630;
+  border-radius: 9px;
+}
+
+/* Event Cards */
+
+.ep-event-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(290px, 100%), 1fr)
+  );
+  gap: 24px;
+}
+
+.ep-event-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ffffff14;
+  border-radius: 18px;
+  background: linear-gradient(
+    145deg,
+    #1b1728,
+    #12111b
+  );
+  animation: epSlideUp 0.6s ease backwards;
+  animation-delay: var(--delay);
+  transition:
+    transform 0.35s,
+    box-shadow 0.35s,
+    border-color 0.35s;
+}
+
+.ep-event-card:hover {
+  transform: translateY(-8px);
+  border-color: #a78bfa;
+  box-shadow:
+    0 12px 35px #8b5cf635,
+    0 0 20px #8b5cf615;
+}
+
+/* Event Banner */
+
+.ep-banner {
+  position: relative;
+  height: 205px;
+  overflow: hidden;
+  background: #201a30;
+}
+
+.ep-banner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.ep-event-card:hover .ep-banner img {
+  transform: scale(1.08);
+}
+
+.ep-banner-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #0005,
+    transparent 40%,
+    #000a
+  );
+  pointer-events: none;
+}
+
+.ep-banner-placeholder {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+  background: radial-gradient(#302344, #181320);
+  color: #81719f;
+  font-size: 12px;
+}
+
+.ep-status {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 25px;
+  text-transform: capitalize;
+  backdrop-filter: blur(8px);
+}
+
+.ep-status.upcoming {
+  color: #93c5fd;
+  background: #1e3a8ad9;
+  border: 1px solid #60a5fa60;
+}
+
+.ep-status.ongoing {
+  color: #6ee7b7;
+  background: #064e3bd9;
+  border: 1px solid #34d39960;
+}
+
+.ep-status.completed {
+  color: #fde68a;
+  background: #78350fd9;
+  border: 1px solid #fbbf2460;
+}
+
+.ep-status.cancelled {
+  color: #fda4af;
+  background: #881337d9;
+  border: 1px solid #fb718560;
+}
+
+.ep-category-tag {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  padding: 7px 11px;
+  color: #ddd6fe;
+  background: #100b20db;
+  border: 1px solid #a78bfa60;
+  border-radius: 8px;
+  font-size: 11px;
+  backdrop-filter: blur(8px);
+}
+
+/* Event Content */
+
+.ep-event-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ep-event-content h3 {
+  font-size: 19px;
+  font-weight: 650;
+  margin: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.ep-event-card:hover h3 {
+  color: #c4b5fd;
+}
+
+.ep-description {
+  min-height: 40px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--ep-muted);
+  margin: 13px 0 18px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ep-event-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.ep-event-details > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #aaa4bf;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.ep-event-details svg {
+  color: #a78bfa;
+  flex-shrink: 0;
+}
+
+.ep-detail-full {
+  grid-column: 1 / -1;
+}
+
+/* Seat Capacity */
+
+.ep-capacity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px;
+  margin-bottom: 20px;
+  background: #8b5cf60d;
+  border: 1px solid #8b5cf625;
+  border-radius: 12px;
+}
+
+.ep-capacity-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #8b5cf620;
+  color: #c4b5fd;
+}
+
+.ep-capacity small {
+  display: block;
+  color: #9894ad;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+
+.ep-capacity strong {
+  color: #ddd6fe;
+  font-size: 14px;
+}
+
+/* Card Footer */
+
+.ep-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 16px;
+  margin-top: auto;
+  border-top: 1px solid #ffffff10;
+}
+
+.ep-price {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ep-price small {
+  font-size: 10px;
+  color: #9894ad;
+}
+
+.ep-price strong {
+  display: flex;
+  align-items: center;
+  font-size: 23px;
+  color: #c4b5fd;
+}
+
+.ep-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.ep-edit,
+.ep-delete {
+  display: grid;
+  place-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.ep-edit {
+  background: #8b5cf615;
+  border: 1px solid #8b5cf630;
+  color: #c4b5fd;
+}
+
+.ep-edit:hover {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px #7c3aed40;
+}
+
+.ep-delete {
+  background: #f43f5e15;
+  border: 1px solid #f43f5e30;
+  color: #fb7185;
+}
+
+.ep-delete:hover {
+  background: #e11d48;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px #e11d4840;
+}
+
+/* Empty State */
+
+.ep-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 320px;
+  padding: 25px;
+  text-align: center;
+  border: 1px solid #ffffff12;
+  border-radius: 18px;
+  background: #15131f;
+  color: #a78bfa;
+}
+
+.ep-empty h3 {
+  color: #e9d5ff;
+  margin: 8px 0 0;
+}
+
+.ep-empty p {
+  color: var(--ep-muted);
+  font-size: 13px;
+  margin: 0 0 10px;
+}
+
+/* Modal */
+
+.ep-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: #030108bb;
+  backdrop-filter: blur(9px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  animation: epFadeIn 0.2s ease;
+}
+
+.ep-modal {
+  width: 750px;
+  max-width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 30px;
+  border: 1px solid #8b5cf645;
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    #211a30,
+    #15131e
+  );
+  box-shadow: 0 25px 100px #0009;
+  animation: epModalIn 0.3s ease both;
+}
+
+.ep-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ep-modal-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  background: #8b5cf625;
+  border: 1px solid #8b5cf640;
+  color: #c4b5fd;
+  border-radius: 15px;
+}
+
+.ep-close {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 9px;
+  background: #ffffff09;
+  color: #a5a0b8;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.ep-close:hover {
+  background: #f43f5e25;
+  color: #fb7185;
+  transform: rotate(90deg);
+}
+
+.ep-modal h2 {
+  font-size: 25px;
+  margin: 0 0 8px;
+}
+
+.ep-modal-subtitle {
+  color: var(--ep-muted);
+  font-size: 13px;
+  margin: 0 0 28px;
+}
+
+/* Form */
+
+.ep-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ep-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  color: #ddd6fe;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ep-field input,
+.ep-field select,
+.ep-field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #ffffff18;
+  border-radius: 10px;
+  background: #100e18;
+  color: white;
+  outline: none;
+  color-scheme: dark;
+  font: inherit;
+  font-weight: 400;
+  transition: 0.25s;
+}
+
+.ep-field input:focus,
+.ep-field select:focus,
+.ep-field textarea:focus {
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 3px #8b5cf615;
+}
+
+.ep-field textarea {
+  resize: vertical;
+}
+
+.ep-field input::placeholder,
+.ep-field textarea::placeholder {
+  color: #736e87;
+}
+
+.ep-full-width {
+  grid-column: 1 / -1;
+}
+
+.ep-banner-preview {
+  width: 100%;
+  max-width: 350px;
+  height: 190px;
+  overflow: hidden;
+  border: 1px solid #8b5cf640;
+  border-radius: 13px;
+}
+
+.ep-banner-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ep-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* Animations */
+
+.ep-spinner {
+  animation: epRotate 1s linear infinite;
+}
+
+@keyframes epRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes epFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes epSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes epModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Responsive Design */
+
+@media (max-width: 1300px) {
+  .ep-summary-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1000px) {
+  .ep-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ep-search {
+    flex-basis: 100%;
+  }
+}
+
+@media (max-width: 650px) {
+  .ep-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px;
+  }
+
+  .ep-summary-grid,
+  .ep-event-grid,
+  .ep-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ep-modal {
+    padding: 20px;
+  }
+
+  .ep-modal-footer {
+    flex-wrap: wrap;
+  }
+
+  .ep-banner {
+    height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .events-page,
+  .events-page * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ep-event-card:hover,
+  .ep-stat-card:hover,
+  .ep-event-card:hover .ep-banner img {
+    transform: none;
+  }
+}
+
+
+/* =========================================
+   ENTERTAINHUB PREMIUM EVENTS V2
+========================================= */
+
+.events-page {
+  --ep-muted: #a19bb5;
+  --ep-border: #ffffff12;
+  --ep-primary: #8b5cf6;
+
+  color: #f8f7ff;
+  animation: epFadeIn 0.5s ease both;
+}
+
+/* =========================================
+   PREMIUM COMPACT HEADER
+========================================= */
+
+.ep-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 22px 26px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  gap: 18px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #7c3aed45,
+      transparent 60%
+    ),
+    linear-gradient(
+      135deg,
+      #1c152e,
+      #111019
+    );
+
+  box-shadow:
+    0 5px 25px #00000025,
+    inset 0 1px 0 #ffffff08;
+
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ep-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(#ffffff04 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff04 1px, transparent 1px);
+
+  background-size: 28px 28px;
+  mask-image: linear-gradient(90deg, transparent, black);
+}
+
+.ep-hero:hover {
+  border-color: #8b5cf680;
+  box-shadow: 0 8px 30px #7c3aed15;
+}
+
+.ep-eyebrow {
+  font-size: 10px;
+  letter-spacing: 1.8px;
+}
+
+.ep-hero h1 {
+  font-size: clamp(24px, 3vw, 30px);
+  margin: 10px 0 7px;
+  font-weight: 750;
+  letter-spacing: -1px;
+}
+
+.ep-hero h1 span {
+  background: linear-gradient(
+    90deg,
+    #c4b5fd,
+    #a78bfa,
+    #f0abfc,
+    #c4b5fd
+  );
+
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: epGradientFlow 6s linear infinite;
+}
+
+.ep-hero p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   PREMIUM BUTTONS
+========================================= */
+
+.ep-primary-button,
+.ep-secondary-button {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 15px;
+  border-radius: 9px;
+  font-size: 12px;
+  gap: 7px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.ep-primary-button {
+  background: linear-gradient(
+    135deg,
+    #9333ea,
+    #7c3aed,
+    #4f46e5
+  );
+
+  box-shadow:
+    0 4px 15px #7c3aed30,
+    inset 0 1px 0 #ffffff20;
+}
+
+.ep-primary-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 25px #8b5cf660;
+}
+
+.ep-primary-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    #ffffff20 50%,
+    transparent 80%
+  );
+
+  transform: translateX(-120%);
+}
+
+.ep-primary-button:hover::after {
+  animation: epShine 0.8s ease;
+}
+
+.ep-primary-button svg {
+  transition: transform 0.3s ease;
+}
+
+.ep-primary-button:hover svg {
+  transform: rotate(8deg) scale(1.1);
+}
+
+.ep-secondary-button {
+  background: linear-gradient(
+    135deg,
+    #242134,
+    #1a1825
+  );
+}
+
+.ep-secondary-button:hover {
+  transform: translateY(-2px);
+  border-color: #8b5cf660;
+  box-shadow: 0 5px 18px #8b5cf620;
+}
+
+.ep-primary-button:active,
+.ep-secondary-button:active {
+  transform: scale(0.96);
+}
+
+/* =========================================
+   COMPACT STATISTICS CARDS
+========================================= */
+
+.ep-summary-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    5,
+    minmax(0, 1fr)
+  );
+
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.ep-stat-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  min-width: 0;
+  min-height: 105px;
+  padding: 12px 14px;
+
+  border: 1px solid var(--ep-border);
+  border-radius: 12px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      color-mix(
+        in srgb,
+        var(--accent, #8b5cf6) 12%,
+        transparent
+      ),
+      transparent 70%
+    ),
+    linear-gradient(
+      145deg,
+      #191824,
+      #111019
+    );
+
+  box-shadow:
+    0 4px 16px #00000020,
+    inset 0 1px 0 #ffffff06;
+
+  animation: epSlideUp 0.55s ease backwards;
+  animation-delay: var(--delay, 0s);
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Neon top border */
+
+.ep-stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent, #8b5cf6),
+    transparent
+  );
+
+  opacity: 0.4;
+
+  transition:
+    opacity 0.3s ease,
+    left 0.3s ease,
+    right 0.3s ease;
+}
+
+/* Glass reflection */
+
+.ep-stat-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    #ffffff05 40%,
+    #ffffff13 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-120%);
+}
+
+.ep-stat-card:hover {
+  transform: translateY(-5px) scale(1.015);
+
+  border-color: var(--accent, #8b5cf6);
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      color-mix(
+        in srgb,
+        var(--accent, #8b5cf6) 22%,
+        transparent
+      ),
+      transparent 75%
+    ),
+    linear-gradient(
+      145deg,
+      #201d2e,
+      #14121e
+    );
+
+  box-shadow:
+    0 10px 30px
+      color-mix(
+        in srgb,
+        var(--accent, #8b5cf6) 22%,
+        transparent
+      ),
+    inset 0 0 25px
+      color-mix(
+        in srgb,
+        var(--accent, #8b5cf6) 6%,
+        transparent
+      );
+}
+
+.ep-stat-card:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+  box-shadow: 0 0 18px var(--accent, #8b5cf6);
+}
+
+.ep-stat-card:hover::after {
+  animation: epShine 0.8s ease;
+}
+
+.ep-stat-card.selected {
+  border-color: var(--accent, #8b5cf6);
+
+  box-shadow:
+    0 4px 24px
+      color-mix(
+        in srgb,
+        var(--accent, #8b5cf6) 15%,
+        transparent
+      );
+}
+
+.ep-stat-card.selected::before {
+  opacity: 1;
+}
+
+.ep-stat-card:active {
+  transform: scale(0.98);
+}
+
+/* Compact Statistics Card Content */
+
+.ep-stat-top {
+  margin-bottom: 8px;
+}
+
+.ep-stat-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+
+  border: 1px solid
+    color-mix(
+      in srgb,
+      var(--accent, #8b5cf6) 25%,
+      transparent
+    );
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ep-stat-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.ep-stat-card:hover .ep-stat-icon {
+  transform: scale(1.12) rotate(-7deg);
+
+  box-shadow: 0 0 20px
+    color-mix(
+      in srgb,
+      var(--accent, #8b5cf6) 30%,
+      transparent
+    );
+}
+
+.ep-stat-arrow {
+  width: 15px;
+  height: 15px;
+  opacity: 0.5;
+}
+
+.ep-stat-card:hover .ep-stat-arrow {
+  color: var(--accent, #8b5cf6);
+  opacity: 1;
+  transform: translate(3px, -3px);
+}
+
+.ep-stat-card > span {
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: #b5b0c6;
+}
+
+.ep-stat-card > strong {
+  display: block;
+  font-size: 25px;
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+
+  transition: color 0.3s ease;
+}
+
+.ep-stat-card:hover > strong,
+.ep-stat-card.selected > strong {
+  color: var(--accent, #8b5cf6);
+}
+
+/* =========================================
+   COMPACT SEARCH AND FILTERS
+========================================= */
+
+.ep-toolbar {
+  padding: 13px;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    145deg,
+    #171522,
+    #111019
+  );
+
+  box-shadow: 0 4px 15px #00000020;
+}
+
+.ep-search {
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.ep-search input {
+  font-size: 12px;
+}
+
+.ep-search:hover {
+  border-color: #8b5cf645;
+}
+
+.ep-search:focus-within {
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 0 0 3px #8b5cf615,
+    0 0 18px #8b5cf610;
+}
+
+.ep-filters {
+  gap: 8px;
+}
+
+.ep-filters select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #1c1928;
+
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.ep-filters select:hover {
+  background: #251f35;
+  border-color: #8b5cf660;
+}
+
+.ep-filters select:focus {
+  box-shadow: 0 0 0 3px #8b5cf615;
+}
+
+.ep-section-heading {
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.ep-section-heading h2 {
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.4px;
+}
+
+.ep-section-heading > span {
+  padding: 5px 10px;
+  font-size: 11px;
+  border-radius: 7px;
+}
+
+/* =========================================
+   PREMIUM COMPACT EVENT CARDS
+========================================= */
+
+.ep-event-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(225px, 100%), 1fr)
+  );
+
+  gap: 15px;
+  align-items: stretch;
+}
+
+.ep-event-card {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid #ffffff12;
+  border-radius: 13px;
+
+  background:
+    radial-gradient(
+      ellipse at bottom right,
+      #8b5cf609,
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      #1b1828,
+      #111019
+    );
+
+  box-shadow:
+    0 5px 20px #00000025,
+    inset 0 1px 0 #ffffff05;
+
+  animation: epSlideUp 0.6s ease backwards;
+  animation-delay: var(--delay, 0s);
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+/* Event card hover highlight */
+
+.ep-event-card:hover,
+.ep-event-card:focus-within {
+  transform: translateY(-6px);
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 12px 30px #8b5cf630,
+    0 0 20px #8b5cf615,
+    inset 0 0 20px #8b5cf607;
+}
+
+/* =========================================
+   COMPACT EVENT BANNER
+========================================= */
+
+.ep-banner {
+  position: relative;
+  height: 145px;
+  overflow: hidden;
+  background: #201a30;
+}
+
+.ep-banner img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s ease;
+}
+
+/* Existing image zoom enhanced */
+
+.ep-event-card:hover .ep-banner img {
+  transform: scale(1.09);
+  filter: brightness(1.08) saturate(1.08);
+}
+
+.ep-banner-gradient {
+  background: linear-gradient(
+    180deg,
+    #0005,
+    transparent 35%,
+    #080510d9
+  );
+}
+
+/* Animated banner shine */
+
+.ep-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    #ffffff05 40%,
+    #ffffff18 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-120%);
+}
+
+.ep-event-card:hover .ep-banner::after {
+  animation: epShine 0.9s ease;
+}
+
+.ep-banner-placeholder {
+  gap: 8px;
+  font-size: 11px;
+  background:
+    radial-gradient(
+      ellipse at top,
+      #392750,
+      #181320
+    );
+}
+
+.ep-banner-placeholder svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* =========================================
+   PREMIUM STATUS BADGES
+========================================= */
+
+.ep-status {
+  z-index: 2;
+  top: 9px;
+  right: 9px;
+
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+
+  box-shadow: 0 3px 10px #00000030;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ep-event-card:hover .ep-status {
+  transform: translateY(-2px);
+}
+
+.ep-status.ongoing {
+  animation: epStatusPulse 2s infinite;
+}
+
+.ep-category-tag {
+  z-index: 2;
+  bottom: 9px;
+  left: 9px;
+
+  max-width: calc(100% - 18px);
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.ep-event-card:hover .ep-category-tag {
+  background: #6d28d9d9;
+  border-color: #c4b5fd80;
+}
+
+/* =========================================
+   COMPACT EVENT CONTENT
+========================================= */
+
+.ep-event-content {
+  min-width: 0;
+  padding: 13px;
+}
+
+.ep-event-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
+
+  transition: color 0.3s ease;
+}
+
+.ep-event-card:hover h3 {
+  color: #c4b5fd;
+}
+
+.ep-description {
+  min-height: 36px;
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 8px 0 12px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* =========================================
+   COMPACT EVENT DETAILS
+========================================= */
+
+.ep-event-details {
+  gap: 9px;
+  margin-bottom: 12px;
+}
+
+.ep-event-details > div {
+  min-width: 0;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ep-event-details span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.ep-event-details svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.ep-event-card:hover .ep-event-details svg {
+  color: #c4b5fd;
+}
+
+.ep-event-details > div:hover svg {
+  transform: scale(1.15);
+}
+
+/* =========================================
+   PREMIUM SEAT CAPACITY CARD
+========================================= */
+
+.ep-capacity {
+  gap: 9px;
+  padding: 9px;
+  margin-bottom: 12px;
+  border-radius: 9px;
+
+  background: linear-gradient(
+    135deg,
+    #8b5cf613,
+    #8b5cf605
+  );
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ep-capacity:hover {
+  border-color: #8b5cf660;
+
+  background: #8b5cf615;
+
+  box-shadow: 0 0 15px #8b5cf615;
+}
+
+.ep-capacity-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 8px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ep-capacity-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ep-capacity:hover .ep-capacity-icon {
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 0 15px #8b5cf630;
+}
+
+.ep-capacity small {
+  font-size: 10px;
+  margin-bottom: 3px;
+}
+
+.ep-capacity strong {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+/* =========================================
+   COMPACT CARD FOOTER
+========================================= */
+
+.ep-card-footer {
+  gap: 8px;
+  padding-top: 11px;
+}
+
+.ep-price {
+  min-width: 0;
+  gap: 4px;
+}
+
+.ep-price small {
+  font-size: 10px;
+}
+
+.ep-price strong {
+  font-size: 19px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+  color: #c4b5fd;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+
+  transition: color 0.3s ease;
+}
+
+.ep-price strong svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.ep-event-card:hover .ep-price strong {
+  color: #ddd6fe;
+}
+
+/* =========================================
+   PREMIUM EDIT AND DELETE BUTTONS
+========================================= */
+
+.ep-actions {
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ep-edit,
+.ep-delete {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease;
+}
+
+.ep-edit svg,
+.ep-delete svg {
+  width: 15px;
+  height: 15px;
+
+  transition: transform 0.3s ease;
+}
+
+.ep-edit:hover:not(:disabled) {
+  background: linear-gradient(
+    135deg,
+    #a855f7,
+    #6d28d9
+  );
+
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 18px #8b5cf650;
+}
+
+.ep-delete:hover:not(:disabled) {
+  background: linear-gradient(
+    135deg,
+    #f43f5e,
+    #be123c
+  );
+
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 18px #f43f5e40;
+}
+
+.ep-edit:hover:not(:disabled) svg,
+.ep-delete:hover:not(:disabled) svg {
+  transform: scale(1.12);
+}
+
+.ep-edit:active:not(:disabled),
+.ep-delete:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+/* =========================================
+   COMPACT EMPTY STATE
+========================================= */
+
+.ep-empty {
+  min-height: 220px;
+  padding: 18px;
+  gap: 9px;
+  border-radius: 13px;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #8b5cf60a,
+      transparent 70%
+    ),
+    #14131e;
+}
+
+.ep-empty h3 {
+  font-size: 17px;
+}
+
+.ep-empty p {
+  font-size: 12px;
+}
+
+/* =========================================
+   PREMIUM MODAL
+========================================= */
+
+.ep-modal-overlay {
+  background: #05030bc9;
+  backdrop-filter: blur(12px);
+}
+
+.ep-modal {
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 90vh;
+  max-height: 90dvh;
+  padding: 23px;
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #8b5cf615,
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      #211b30,
+      #14121e
+    );
+
+  box-shadow:
+    0 25px 100px #00000099,
+    0 0 40px #7c3aed15,
+    inset 0 1px 0 #ffffff0a;
+
+  scrollbar-width: thin;
+  scrollbar-color: #6d28d9 #14131e;
+
+  animation: epModalIn 0.35s ease both;
+}
+
+.ep-modal-header {
+  margin-bottom: 16px;
+}
+
+.ep-modal-footer {
+  gap: 9px;
+  margin-top: 18px;
+}
+
+/* =========================================
+   COMPACT FORM FIELDS
+========================================= */
+
+.ep-form-grid {
+  gap: 14px;
+}
+
+.ep-modal input,
+.ep-modal textarea,
+.ep-modal select {
+  font-size: 12px;
+  border-radius: 9px;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.ep-modal input:focus,
+.ep-modal textarea:focus,
+.ep-modal select:focus {
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 0 0 3px #8b5cf615,
+    0 0 15px #8b5cf609;
+}
+
+/* =========================================
+   KEYBOARD FOCUS AND DISABLED STATES
+========================================= */
+
+.events-page button:focus-visible,
+.ep-modal button:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 3px;
+}
+
+.events-page button:disabled,
+.ep-modal button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  transform: none;
+  box-shadow: none;
+}
+
+/* =========================================
+   ADDITIONAL PREMIUM ANIMATIONS
+========================================= */
+
+@keyframes epGradientFlow {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes epShine {
+  from {
+    transform: translateX(-120%);
+  }
+
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes epStatusPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #34d39940;
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px #34d39900;
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+/* Large Desktop */
+
+@media (min-width: 1600px) {
+  .ep-event-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(235px, 1fr)
+    );
+  }
+}
+
+/* Desktop */
+
+@media (max-width: 1300px) {
+  .ep-summary-grid {
+    grid-template-columns: repeat(
+      5,
+      minmax(0, 1fr)
+    );
+
+    gap: 10px;
+  }
+
+  .ep-stat-card {
+    padding: 11px;
+  }
+
+  .ep-stat-card > strong {
+    font-size: 23px;
+  }
+
+  .ep-event-grid {
+    gap: 12px;
+  }
+}
+
+/* Small Desktop */
+
+@media (max-width: 1100px) {
+  .ep-summary-grid {
+    grid-template-columns: repeat(
+      3,
+      minmax(0, 1fr)
+    );
+  }
+}
+
+/* Tablets */
+
+@media (max-width: 850px) {
+  .ep-summary-grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+  }
+
+  .ep-search {
+    flex-basis: 100%;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+  .ep-hero {
+    padding: 18px;
+    gap: 14px;
+  }
+
+  .ep-summary-grid {
+    grid-template-columns: repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+    gap: 10px;
+  }
+
+  .ep-stat-card {
+    min-height: 98px;
+    padding: 11px;
+  }
+
+  .ep-stat-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .ep-stat-card > strong {
+    font-size: 22px;
+  }
+
+  .ep-event-grid {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(min(220px, 100%), 1fr)
+    );
+
+    gap: 12px;
+  }
+
+  .ep-banner {
+    height: 140px;
+  }
+
+  .ep-event-content {
+    padding: 11px;
+  }
+
+  .ep-toolbar {
+    padding: 11px;
+  }
+
+  .ep-filters select {
+    max-width: 100%;
+  }
+
+  .ep-modal {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 450px) {
+  .ep-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ep-event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ep-banner {
+    height: 160px;
+  }
+
+  .ep-hero h1 {
+    font-size: 23px;
+  }
+
+  .ep-section-heading {
+    flex-wrap: wrap;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .events-page,
+  .events-page *,
+  .events-page *::before,
+  .events-page *::after,
+  .ep-modal-overlay,
+  .ep-modal,
+  .ep-modal * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ep-stat-card:hover,
+  .ep-event-card:hover,
+  .ep-event-card:focus-within,
+  .ep-event-card:hover .ep-banner img,
+  .ep-stat-card:hover .ep-stat-icon,
+  .ep-capacity:hover .ep-capacity-icon,
+  .ep-edit:hover,
+  .ep-delete:hover {
+    transform: none !important;
+  }
+}

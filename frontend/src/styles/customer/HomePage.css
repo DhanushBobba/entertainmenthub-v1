@@ -1,0 +1,3243 @@
+/* =========================================
+   PREMIUM CUSTOMER HOME PAGE
+========================================= */
+
+.customer-home {
+  --ch-muted: #a19bb5;
+  --ch-border: #ffffff12;
+
+  animation: chFadeIn 0.5s ease both;
+}
+
+/* =========================================
+   CINEMATIC HERO SECTION
+========================================= */
+
+.ch-hero {
+  min-height: 340px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  padding: 35px;
+  margin-bottom: 22px;
+
+  border: 1px solid #8b5cf640;
+  border-radius: 20px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #7c3aed40,
+      transparent 65%
+    ),
+    linear-gradient(
+      135deg,
+      #20132e,
+      #0d0b16
+    );
+
+  box-shadow: 0 10px 35px #00000030;
+}
+
+.ch-hero-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 58%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 30%;
+
+  opacity: 0.85;
+
+  z-index: -2;
+
+  transition: transform 1s ease;
+}
+
+.ch-hero:hover .ch-hero-image {
+  transform: scale(1.05);
+}
+
+.ch-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: linear-gradient(
+    90deg,
+    #130e20 0%,
+    #130e20f5 28%,
+    #130e20d9 43%,
+    #130e2040 100%
+  );
+}
+
+.ch-hero-content {
+  width: 100%;
+  max-width: 600px;
+
+  animation: chSlideUp 0.7s ease backwards;
+}
+
+.ch-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 7px 11px;
+
+  border: 1px solid #a78bfa40;
+  border-radius: 20px;
+
+  color: #c4b5fd;
+  background: #8b5cf615;
+
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+
+  transition: 0.3s ease;
+}
+
+.ch-hero-badge:hover {
+  border-color: #a78bfa;
+  box-shadow: 0 0 20px #8b5cf630;
+}
+
+.ch-welcome {
+  margin: 20px 0 8px;
+  color: #c4b5fd;
+  font-size: 14px;
+}
+
+.ch-hero h1 {
+  margin: 0 0 17px;
+
+  font-size: clamp(32px, 4.5vw, 60px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.ch-hero h1 span {
+  background: linear-gradient(
+    90deg,
+    #a78bfa,
+    #e879f9,
+    #c4b5fd,
+    #a78bfa
+  );
+
+  background-size: 250% 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: chGradientFlow 6s linear infinite;
+}
+
+.ch-hero-description {
+  max-width: 450px;
+  margin: 0;
+
+  color: #b6afc7;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.ch-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* =========================================
+   PREMIUM BUTTONS
+========================================= */
+
+.ch-primary-button,
+.ch-secondary-button {
+  position: relative;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 16px;
+  border-radius: 9px;
+
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    background 0.3s;
+}
+
+.ch-primary-button {
+  color: white;
+  border: 1px solid #a78bfa50;
+
+  background: linear-gradient(
+    135deg,
+    #9333ea,
+    #6d28d9,
+    #4f46e5
+  );
+
+  box-shadow: 0 5px 20px #7c3aed30;
+}
+
+.ch-primary-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px #8b5cf650;
+}
+
+.ch-secondary-button {
+  color: #ddd6fe;
+  background: #ffffff08;
+  border: 1px solid #a78bfa40;
+}
+
+.ch-secondary-button:hover {
+  background: #8b5cf625;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px #8b5cf625;
+}
+
+.ch-primary-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    #ffffff25 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-120%);
+}
+
+.ch-primary-button:hover::after {
+  animation: chShine 0.8s ease;
+}
+
+/* =========================================
+   COMPACT QUICK ACCESS CARDS
+========================================= */
+
+.ch-quick-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.ch-quick-card {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 15px;
+  border: 1px solid var(--ch-border);
+  border-radius: 13px;
+
+  background: linear-gradient(
+    145deg,
+    #191622,
+    #111019
+  );
+
+  color: white;
+  text-decoration: none;
+
+  animation: chSlideUp 0.6s ease backwards;
+  animation-delay: var(--delay, 0s);
+
+  transition:
+    transform 0.35s,
+    box-shadow 0.35s,
+    border-color 0.35s;
+}
+
+.ch-quick-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+
+  box-shadow: 0 8px 25px
+    color-mix(
+      in srgb,
+      var(--accent) 20%,
+      transparent
+    );
+}
+
+.ch-quick-icon {
+  width: 43px;
+  height: 43px;
+
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  color: var(--accent);
+
+  background: color-mix(
+    in srgb,
+    var(--accent) 13%,
+    transparent
+  );
+
+  border-radius: 11px;
+
+  transition: transform 0.3s;
+}
+
+.ch-quick-card:hover .ch-quick-icon {
+  transform: rotate(-6deg) scale(1.12);
+}
+
+.ch-quick-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.ch-quick-info strong {
+  display: block;
+  font-size: 14px;
+}
+
+.ch-quick-info span {
+  display: block;
+  margin-top: 5px;
+
+  color: var(--ch-muted);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ch-quick-arrow {
+  flex-shrink: 0;
+  color: var(--accent);
+
+  transition: transform 0.3s;
+}
+
+.ch-quick-card:hover .ch-quick-arrow {
+  transform: translateX(3px);
+}
+
+/* =========================================
+   PREMIUM SEARCH TOOLBAR
+========================================= */
+
+.ch-toolbar {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 27px;
+  padding: 12px;
+
+  border: 1px solid #ffffff12;
+  border-radius: 12px;
+  background: #15121e;
+}
+
+.ch-search {
+  flex: 1;
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px 13px;
+
+  border: 1px solid #ffffff18;
+  border-radius: 8px;
+  background: #100e17;
+
+  color: #a78bfa;
+
+  transition: 0.3s ease;
+}
+
+.ch-search:focus-within {
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 0 0 3px #8b5cf615,
+    0 0 15px #8b5cf610;
+}
+
+.ch-search svg {
+  flex-shrink: 0;
+}
+
+.ch-search input {
+  width: 100%;
+  min-width: 0;
+
+  outline: none;
+  border: none;
+  background: transparent;
+
+  color: white;
+  font: inherit;
+  font-size: 13px;
+}
+
+.ch-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  padding: 11px 14px;
+  border-radius: 8px;
+
+  border: 1px solid #8b5cf630;
+  background: #8b5cf615;
+  color: #c4b5fd;
+
+  font-size: 12px;
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.ch-refresh:hover:not(:disabled) {
+  background: #7c3aed;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.ch-refresh:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.ch-section {
+  margin-bottom: 32px;
+}
+
+.ch-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 18px;
+}
+
+.ch-section-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 21px;
+  letter-spacing: -0.5px;
+  margin: 0 0 6px;
+}
+
+.ch-section-heading h2 svg {
+  color: #a78bfa;
+}
+
+.ch-section-heading p {
+  color: var(--ch-muted);
+  font-size: 12px;
+  margin: 0;
+}
+
+.ch-view-all {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #c4b5fd;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: 0.3s;
+}
+
+.ch-view-all:hover {
+  color: white;
+  transform: translateX(3px);
+}
+
+/* =========================================
+   COMPACT MOVIE AND EVENT GRIDS
+========================================= */
+
+.ch-movie-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(175px, 100%), 1fr)
+  );
+
+  gap: 16px;
+}
+
+.ch-event-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(245px, 100%), 1fr)
+  );
+
+  gap: 16px;
+}
+
+/* =========================================
+   PREMIUM ENTERTAINMENT CARDS
+========================================= */
+
+.ch-movie-card,
+.ch-event-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid #ffffff12;
+  border-radius: 13px;
+
+  background: linear-gradient(
+    145deg,
+    #1b1728,
+    #111019
+  );
+
+  box-shadow: 0 5px 20px #00000025;
+
+  animation: chSlideUp 0.6s ease backwards;
+  animation-delay: var(--delay, 0s);
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s,
+    box-shadow 0.35s;
+}
+
+.ch-movie-card:hover,
+.ch-event-card:hover {
+  transform: translateY(-6px);
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 12px 30px #8b5cf630,
+    0 0 20px #8b5cf615;
+}
+
+/* Cinematic Poster */
+
+.ch-movie-poster,
+.ch-event-banner {
+  position: relative;
+  overflow: hidden;
+  background: #20182d;
+}
+
+.ch-movie-poster {
+  aspect-ratio: 2 / 3;
+  max-height: 280px;
+}
+
+.ch-event-banner {
+  aspect-ratio: 16 / 9;
+}
+
+.ch-movie-poster img,
+.ch-event-banner img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+
+  transition:
+    transform 0.65s ease,
+    filter 0.4s ease;
+}
+
+.ch-movie-card:hover img,
+.ch-event-card:hover img {
+  transform: scale(1.09);
+  filter: brightness(1.08) saturate(1.1);
+}
+
+.ch-poster-overlay {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    #00000050,
+    transparent 35%,
+    #08051070
+  );
+
+  pointer-events: none;
+}
+
+/* Premium Glass Shine */
+
+.ch-movie-poster::after,
+.ch-event-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    #ffffff20 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-120%);
+}
+
+.ch-movie-card:hover .ch-movie-poster::after,
+.ch-event-card:hover .ch-event-banner::after {
+  animation: chShine 0.9s ease;
+}
+
+/* Missing Image */
+
+.ch-image-fallback {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  color: #9890ad;
+  font-size: 11px;
+
+  background: radial-gradient(
+    #302344,
+    #181320
+  );
+}
+
+/* Status Badges */
+
+.ch-status {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  z-index: 2;
+
+  padding: 5px 9px;
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 650;
+  text-transform: capitalize;
+
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s;
+}
+
+.ch-status.now_showing,
+.ch-status.ongoing {
+  color: #6ee7b7;
+  background: #064e3bd9;
+  border: 1px solid #34d39960;
+}
+
+.ch-status.upcoming {
+  color: #93c5fd;
+  background: #1e3a8ad9;
+  border: 1px solid #60a5fa60;
+}
+
+.ch-movie-card:hover .ch-status,
+.ch-event-card:hover .ch-status {
+  transform: translateY(-2px);
+}
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.ch-card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+
+  padding: 13px;
+}
+
+.ch-card-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+
+  margin: 0 0 8px;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  transition: color 0.3s;
+}
+
+.ch-movie-card:hover h3,
+.ch-event-card:hover h3 {
+  color: #c4b5fd;
+}
+
+.ch-movie-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  color: #ada7bd;
+  font-size: 11px;
+}
+
+.ch-movie-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ch-movie-meta svg {
+  color: #a78bfa;
+}
+
+.ch-description {
+  margin: 10px 0;
+  min-height: 35px;
+
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--ch-muted);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+/* Event Information */
+
+.ch-event-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ch-event-details span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #aaa4bf;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.ch-event-details svg {
+  color: #a78bfa;
+  flex-shrink: 0;
+}
+
+/* Card Footer */
+
+.ch-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  border-top: 1px solid #ffffff0d;
+
+  padding-top: 10px;
+  margin-top: auto;
+}
+
+.ch-price small {
+  display: block;
+
+  color: #9894ad;
+  font-size: 10px;
+  margin-bottom: 4px;
+}
+
+.ch-price strong {
+  color: #c4b5fd;
+  font-size: 19px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.ch-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 6px 8px;
+  border-radius: 7px;
+
+  color: #c4b5fd;
+  background: #8b5cf615;
+  border: 1px solid #8b5cf625;
+
+  font-size: 10px;
+  text-transform: capitalize;
+}
+
+/* =========================================
+   EMPTY STATE AND LOADING
+========================================= */
+
+.ch-empty {
+  min-height: 160px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  padding: 20px;
+
+  border: 1px dashed #8b5cf630;
+  border-radius: 13px;
+
+  background: #15121e;
+  color: #a78bfa;
+  text-align: center;
+}
+
+.ch-empty p {
+  margin: 0;
+  color: var(--ch-muted);
+  font-size: 13px;
+}
+
+.ch-spinning {
+  animation: chRotate 1s linear infinite;
+}
+
+/* =========================================
+   PREMIUM ANIMATIONS
+========================================= */
+
+@keyframes chRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes chFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes chSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes chGradientFlow {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes chShine {
+  from {
+    transform: translateX(-120%);
+  }
+
+  to {
+    transform: translateX(120%);
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+  .ch-quick-grid {
+    gap: 10px;
+  }
+
+  .ch-quick-card {
+    padding: 12px;
+  }
+
+  .ch-quick-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .ch-hero {
+    min-height: 300px;
+    padding: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .ch-hero {
+    min-height: 300px;
+    padding: 23px;
+    border-radius: 15px;
+  }
+
+  .ch-hero-image {
+    width: 100%;
+    opacity: 0.4;
+  }
+
+  .ch-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      #130e20ed,
+      #130e2080
+    );
+  }
+
+  .ch-hero h1 {
+    font-size: 36px;
+  }
+
+  .ch-hero-description {
+    font-size: 12px;
+  }
+
+  .ch-quick-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-movie-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .ch-event-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .ch-toolbar {
+    padding: 9px;
+    gap: 8px;
+  }
+
+  .ch-section-heading h2 {
+    font-size: 18px;
+  }
+
+  .ch-card-content {
+    padding: 11px;
+  }
+}
+
+@media (max-width: 450px) {
+  .ch-hero {
+    padding: 19px;
+  }
+
+  .ch-hero h1 {
+    font-size: 30px;
+  }
+
+  .ch-hero-badge {
+    font-size: 8px;
+  }
+
+  .ch-event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ch-card-content h3 {
+    font-size: 14px;
+  }
+
+  .ch-price strong {
+    font-size: 17px;
+  }
+
+  .ch-section-heading p {
+    font-size: 10px;
+  }
+
+  .ch-refresh {
+    padding: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .customer-home,
+  .customer-home *,
+  .customer-home *::before,
+  .customer-home *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ch-movie-card:hover,
+  .ch-event-card:hover,
+  .ch-quick-card:hover,
+  .ch-movie-card:hover img,
+  .ch-event-card:hover img,
+  .ch-hero:hover .ch-hero-image,
+  .ch-primary-button:hover,
+  .ch-secondary-button:hover {
+    transform: none !important;
+  }
+}
+
+
+
+/* =========================================
+   PREMIUM SINGLE ROW ENTERTAINMENT CARDS
+========================================= */
+
+.customer-home {
+  min-width: 0;
+  width: 100%;
+}
+
+.ch-section {
+  min-width: 0;
+  margin-bottom: 28px;
+}
+
+/* =========================================
+   SINGLE ROW MOVIES AND EVENTS
+========================================= */
+
+.ch-movie-grid,
+.ch-event-grid {
+  display: flex;
+
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+
+  gap: 14px;
+  padding: 10px 3px 15px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 3px;
+
+  overscroll-behavior-inline: contain;
+
+  scrollbar-width: thin;
+  scrollbar-color: #6d28d9 #17131f;
+}
+
+/* =========================================
+   COMPACT MOVIE CARDS
+========================================= */
+
+.ch-movie-card {
+  flex: 0 0 185px;
+
+  width: 185px;
+  min-width: 185px;
+  max-width: 185px;
+
+  scroll-snap-align: start;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  border: 1px solid #ffffff12;
+  border-radius: 13px;
+
+  background:
+    radial-gradient(
+      ellipse at bottom right,
+      #8b5cf610,
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      #1b1728,
+      #111019
+    );
+
+  box-shadow: 0 5px 18px #00000030;
+
+  animation: chSlideUp 0.6s ease backwards;
+  animation-delay: var(--delay, 0s);
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* =========================================
+   PREMIUM MOVIE CARD HOVER
+========================================= */
+
+.ch-movie-card:hover {
+  transform: translateY(-5px) scale(1.015);
+
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 8px 22px #8b5cf635,
+    0 0 18px #8b5cf620,
+    inset 0 0 15px #8b5cf608;
+}
+
+/* =========================================
+   COMPACT MOVIE POSTER
+========================================= */
+
+.ch-movie-poster {
+  position: relative;
+
+  width: 100%;
+  height: 235px;
+  max-height: none;
+  aspect-ratio: auto;
+
+  overflow: hidden;
+
+  background: #20182d;
+}
+
+.ch-movie-poster img {
+  width: 100%;
+  height: 100%;
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  transition:
+    transform 0.65s ease,
+    filter 0.4s ease;
+}
+
+.ch-movie-card:hover .ch-movie-poster img {
+  transform: scale(1.09);
+  filter: brightness(1.08) saturate(1.1);
+}
+
+/* =========================================
+   COMPACT EVENT CARDS
+========================================= */
+
+.ch-event-card {
+  flex: 0 0 265px;
+
+  width: 265px;
+  min-width: 265px;
+  max-width: 265px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  scroll-snap-align: start;
+
+  border: 1px solid #ffffff12;
+  border-radius: 13px;
+
+  background:
+    radial-gradient(
+      ellipse at bottom right,
+      #8b5cf610,
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      #1b1728,
+      #111019
+    );
+
+  box-shadow: 0 5px 18px #00000030;
+
+  animation: chSlideUp 0.6s ease backwards;
+  animation-delay: var(--delay, 0s);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.ch-event-card:hover {
+  transform: translateY(-5px) scale(1.015);
+
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 8px 22px #8b5cf635,
+    0 0 18px #8b5cf620;
+}
+
+/* =========================================
+   COMPACT EVENT BANNER
+========================================= */
+
+.ch-event-banner {
+  width: 100%;
+  height: 150px;
+  aspect-ratio: auto;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.ch-event-banner img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.65s ease,
+    filter 0.4s ease;
+}
+
+.ch-event-card:hover .ch-event-banner img {
+  transform: scale(1.09);
+  filter: brightness(1.08) saturate(1.1);
+}
+
+/* =========================================
+   COMPACT CARD CONTENT
+========================================= */
+
+.ch-card-content {
+  min-width: 0;
+  flex: 1;
+
+  padding: 11px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.ch-card-content h3 {
+  margin: 0 0 7px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: -0.3px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: color 0.3s ease;
+}
+
+.ch-movie-card:hover h3,
+.ch-event-card:hover h3 {
+  color: #c4b5fd;
+}
+
+/* Movie Information */
+
+.ch-movie-meta {
+  gap: 6px;
+  font-size: 10px;
+}
+
+.ch-movie-meta svg {
+  width: 12px;
+  height: 12px;
+}
+
+.ch-description {
+  min-height: 32px;
+  margin: 8px 0;
+
+  font-size: 11px;
+  line-height: 1.5;
+
+  color: #a19bb5;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+/* Event Information */
+
+.ch-event-details {
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.ch-event-details span {
+  font-size: 11px;
+  gap: 6px;
+  overflow-wrap: anywhere;
+}
+
+.ch-event-details svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* =========================================
+   COMPACT STATUS BADGES
+========================================= */
+
+.ch-status {
+  top: 8px;
+  right: 8px;
+
+  padding: 5px 8px;
+
+  font-size: 9px;
+  font-weight: 650;
+
+  border-radius: 20px;
+}
+
+/* =========================================
+   PREMIUM CARD FOOTER
+========================================= */
+
+.ch-card-footer {
+  gap: 6px;
+  padding-top: 9px;
+  margin-top: auto;
+}
+
+.ch-price small {
+  font-size: 9px;
+  margin-bottom: 3px;
+}
+
+.ch-price strong {
+  font-size: 17px;
+  font-weight: 750;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.ch-movie-card:hover .ch-price strong,
+.ch-event-card:hover .ch-price strong {
+  color: #e9d5ff;
+
+  text-shadow: 0 0 12px #8b5cf640;
+}
+
+.ch-availability {
+  font-size: 9px;
+
+  padding: 5px 6px;
+  border-radius: 6px;
+}
+
+/* =========================================
+   PREMIUM HORIZONTAL SCROLLBAR
+========================================= */
+
+.customer-layout .ch-movie-grid::-webkit-scrollbar,
+.customer-layout .ch-event-grid::-webkit-scrollbar {
+  height: 5px;
+}
+
+.customer-layout .ch-movie-grid::-webkit-scrollbar-track,
+.customer-layout .ch-event-grid::-webkit-scrollbar-track {
+  background: #17131f;
+  border-radius: 10px;
+}
+
+.customer-layout .ch-movie-grid::-webkit-scrollbar-thumb,
+.customer-layout .ch-event-grid::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    #6d28d9,
+    #a78bfa
+  );
+
+  border-radius: 10px;
+}
+
+.customer-layout .ch-movie-grid::-webkit-scrollbar-thumb:hover,
+.customer-layout .ch-event-grid::-webkit-scrollbar-thumb:hover {
+  background: #c4b5fd;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.ch-section-heading {
+  margin-bottom: 8px;
+}
+
+.ch-section-heading h2 {
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+
+/* =========================================
+   PREMIUM QUICK ACCESS CARDS
+========================================= */
+
+.ch-quick-grid {
+  display: flex;
+  flex-wrap: nowrap;
+
+  width: 100%;
+  min-width: 0;
+
+  overflow-x: auto;
+  gap: 12px;
+
+  padding: 6px 3px 12px;
+  margin-bottom: 14px;
+}
+
+.ch-quick-card {
+  flex: 1 0 220px;
+  min-width: 220px;
+
+  padding: 12px;
+  border-radius: 11px;
+}
+
+.ch-quick-icon {
+  width: 37px;
+  height: 37px;
+}
+
+.ch-quick-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ch-quick-info strong {
+  font-size: 13px;
+}
+
+.ch-quick-info span {
+  font-size: 10px;
+}
+
+/* =========================================
+   RESPONSIVE TABLET DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+  .ch-movie-card {
+    flex-basis: 170px;
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+  }
+
+  .ch-movie-poster {
+    height: 220px;
+  }
+
+  .ch-event-card {
+    flex-basis: 245px;
+    width: 245px;
+    min-width: 245px;
+    max-width: 245px;
+  }
+
+  .ch-event-banner {
+    height: 140px;
+  }
+}
+
+/* =========================================
+   RESPONSIVE MOBILE DESIGN
+========================================= */
+
+@media (max-width: 700px) {
+  .ch-movie-grid,
+  .ch-event-grid {
+    gap: 11px;
+  }
+
+  .ch-movie-card {
+    flex-basis: 155px;
+
+    width: 155px;
+    min-width: 155px;
+    max-width: 155px;
+  }
+
+  .ch-movie-poster {
+    height: 205px;
+  }
+
+  .ch-event-card {
+    flex-basis: 225px;
+
+    width: 225px;
+    min-width: 225px;
+    max-width: 225px;
+  }
+
+  .ch-event-banner {
+    height: 130px;
+  }
+
+  .ch-card-content {
+    padding: 10px;
+  }
+
+  .ch-card-content h3 {
+    font-size: 13px;
+  }
+
+  .ch-quick-card {
+    flex-basis: 190px;
+    min-width: 190px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-movie-grid,
+  .ch-event-grid {
+    scroll-behavior: auto;
+  }
+
+  .ch-movie-card:hover,
+  .ch-event-card:hover,
+  .ch-movie-card:hover img,
+  .ch-event-card:hover img,
+  .ch-quick-card:hover {
+    transform: none !important;
+  }
+}
+
+
+/* =========================================
+   PREMIUM CARD BOOK NOW BUTTON
+========================================= */
+
+.ch-book-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  width: 100%;
+  min-height: 34px;
+
+  margin-top: 10px;
+  padding: 8px 6px;
+
+  box-sizing: border-box;
+
+  background: linear-gradient(
+    135deg,
+    #9333ea,
+    #7c3aed,
+    #4f46e5
+  );
+
+  border: 1px solid #a78bfa40;
+  border-radius: 8px;
+
+  color: white;
+  font-size: 11px;
+  font-weight: 650;
+  text-decoration: none;
+
+  white-space: nowrap;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ch-book-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 18px #8b5cf650,
+    0 0 12px #8b5cf620;
+}
+
+.ch-book-button::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    #ffffff25 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-120%);
+}
+
+.ch-book-button:hover::after {
+  animation: chShine 0.8s ease;
+}
+
+.ch-book-button svg {
+  transition: transform 0.3s ease;
+}
+
+.ch-book-button:hover svg:last-child {
+  transform: translateX(3px);
+}
+
+.ch-book-button:active {
+  transform: scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-book-button:hover,
+  .ch-book-button:hover svg {
+    transform: none;
+  }
+}
+
+/* =========================================
+   PREMIUM CINEMATIC VIDEO HERO
+========================================= */
+
+.eh-video-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 420px;
+  padding: 40px;
+  overflow: hidden;
+  border-radius: 22px;
+  border: 1px solid #8b5cf635;
+  background: #09090f;
+  box-shadow: 0 12px 40px #00000040;
+}
+
+/* Background Video */
+
+.eh-hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  z-index: -3;
+  transition: transform 1s ease;
+}
+
+/* Cinematic Gradient Overlay */
+
+.eh-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(9, 9, 15, 0.96) 0%,
+      rgba(9, 9, 15, 0.82) 30%,
+      rgba(9, 9, 15, 0.35) 65%,
+      rgba(9, 9, 15, 0.08) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(9, 9, 15, 0.75),
+      transparent 45%
+    );
+}
+
+/* Purple Cinematic Glow */
+
+.eh-video-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+
+  background: radial-gradient(
+    ellipse at 10% 20%,
+    #7c3aed25,
+    transparent 60%
+  );
+}
+
+/* Hero Content */
+
+.eh-video-content {
+  position: relative;
+  z-index: 2;
+  max-width: 580px;
+  width: 100%;
+  animation: ehHeroEntrance 0.8s ease both;
+}
+
+/* Premium Hover Animation */
+
+.eh-video-hero:hover .eh-hero-video {
+  transform: scale(1.035);
+}
+
+.eh-video-hero:hover {
+  border-color: #a78bfa60;
+  box-shadow:
+    0 12px 40px #00000050,
+    0 0 30px #8b5cf615;
+}
+
+/* Content Entrance Animation */
+
+@keyframes ehHeroEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .eh-video-hero {
+    min-height: 360px;
+    padding: 28px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .eh-video-hero {
+    min-height: 340px;
+    padding: 22px;
+    border-radius: 15px;
+  }
+
+  .eh-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      #09090fe8,
+      #09090f65
+    );
+  }
+
+  .eh-video-content {
+    max-width: 100%;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .eh-video-content {
+    animation: none;
+  }
+
+  .eh-hero-video {
+    display: none;
+    transition: none;
+  }
+}
+
+
+/* =========================================
+   PREMIUM ENTERTAINMENT SECTION CARDS
+========================================= */
+
+.ch-category-section {
+  --section-accent: #a78bfa;
+  --section-rgb: 167, 139, 250;
+
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+
+  padding: 22px;
+  margin: 22px 0;
+
+  border: 1px solid rgba(
+    var(--section-rgb),
+    0.22
+  );
+
+  border-radius: 20px;
+
+  background:
+    radial-gradient(
+      ellipse at top left,
+      rgba(var(--section-rgb), 0.075),
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      #15131e,
+      #101019
+    );
+
+  box-shadow: 0 8px 30px #00000020;
+
+  animation: chCategoryEntrance 0.65s ease backwards;
+
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+/* =========================================
+   INDIVIDUAL SECTION COLOR THEMES
+========================================= */
+
+/* Now Showing — Emerald */
+
+.ch-theme-now {
+  --section-accent: #34d399;
+  --section-rgb: 52, 211, 153;
+}
+
+/* Coming Soon — Violet */
+
+.ch-theme-upcoming {
+  --section-accent: #a78bfa;
+  --section-rgb: 167, 139, 250;
+}
+
+
+
+/* Upcoming Events — Electric Blue */
+
+.ch-theme-events {
+  --section-accent: #60a5fa;
+  --section-rgb: 96, 165, 250;
+}
+
+/* Completed — Premium Gold */
+
+.ch-theme-completed {
+  --section-accent: #fbbf24;
+  --section-rgb: 251, 191, 36;
+}
+
+/* =========================================
+   PREMIUM SECTION HOVER EFFECT
+========================================= */
+
+.ch-category-section:hover {
+  border-color: rgba(
+    var(--section-rgb),
+    0.55
+  );
+
+  box-shadow:
+    0 12px 35px #00000035,
+    0 0 30px rgba(var(--section-rgb), 0.09),
+    inset 0 0 35px rgba(var(--section-rgb), 0.025);
+}
+
+/* Animated Top Border */
+
+.ch-category-section::before {
+  content: "";
+  position: absolute;
+
+  top: -1px;
+  left: 15%;
+  right: 15%;
+
+  height: 2px;
+  z-index: 1;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--section-accent),
+    transparent
+  );
+
+  opacity: 0.65;
+
+  box-shadow: 0 0 14px var(--section-accent);
+
+  transition:
+    opacity 0.35s ease,
+    left 0.35s ease,
+    right 0.35s ease;
+}
+
+.ch-category-section:hover::before {
+  left: 5%;
+  right: 5%;
+  opacity: 1;
+}
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.ch-category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+  margin-bottom: 16px;
+}
+
+.ch-category-title-wrapper {
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+  gap: 12px;
+}
+
+/* Premium Section Icon */
+
+.ch-category-icon {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 12px;
+
+  color: var(--section-accent);
+
+  border: 1px solid rgba(
+    var(--section-rgb),
+    0.28
+  );
+
+  background: rgba(
+    var(--section-rgb),
+    0.1
+  );
+
+  box-shadow: 0 4px 15px rgba(
+    var(--section-rgb),
+    0.06
+  );
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+.ch-category-title-wrapper:hover .ch-category-icon {
+  transform: rotate(-8deg) scale(1.1);
+
+  background: rgba(
+    var(--section-rgb),
+    0.2
+  );
+
+  box-shadow: 0 0 25px rgba(
+    var(--section-rgb),
+    0.3
+  );
+}
+
+/* Section Heading */
+
+.ch-category-title-wrapper h2 {
+  font-size: 20px;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+
+  margin: 0 0 5px;
+
+  color: #f5f3ff;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.ch-category-title-wrapper:hover h2 {
+  color: var(--section-accent);
+
+  text-shadow: 0 0 18px rgba(
+    var(--section-rgb),
+    0.3
+  );
+}
+
+.ch-category-title-wrapper p {
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  color: #a19bb5;
+  margin: 0;
+}
+
+/* =========================================
+   SECTION ACTIONS AND BADGES
+========================================= */
+
+.ch-category-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ch-category-badge {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+  padding: 6px 11px;
+
+  border-radius: 20px;
+
+  color: var(--section-accent);
+  background: rgba(var(--section-rgb), 0.09);
+  border: 1px solid rgba(var(--section-rgb), 0.2);
+
+  font-size: 10px;
+  font-weight: 650;
+
+  white-space: nowrap;
+
+  transition: 0.3s ease;
+}
+
+.ch-category-badge:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 0 18px rgba(
+    var(--section-rgb),
+    0.18
+  );
+}
+
+.ch-category-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--section-accent);
+}
+
+/* Live Animated Indicator */
+
+.ch-theme-live .ch-category-dot {
+  animation: chLivePulse 1.8s infinite;
+}
+
+.ch-category-count {
+  padding: 6px 10px;
+
+  border-radius: 8px;
+  border: 1px solid #ffffff0d;
+  background: #ffffff05;
+
+  color: #a19bb5;
+  font-size: 11px;
+
+  white-space: nowrap;
+}
+
+/* View All Button */
+
+.ch-category-view {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+  padding: 8px 11px;
+
+  border-radius: 8px;
+
+  border: 1px solid rgba(
+    var(--section-rgb),
+    0.2
+  );
+
+  background: rgba(
+    var(--section-rgb),
+    0.06
+  );
+
+  color: var(--section-accent);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: 0.3s ease;
+}
+
+.ch-category-view:hover {
+  transform: translateY(-3px);
+
+  background: rgba(
+    var(--section-rgb),
+    0.16
+  );
+
+  border-color: var(--section-accent);
+
+  box-shadow: 0 5px 18px rgba(
+    var(--section-rgb),
+    0.15
+  );
+}
+
+.ch-category-view svg {
+  transition: transform 0.3s ease;
+}
+
+.ch-category-view:hover svg {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   PREMIUM SECTION DIVIDER
+========================================= */
+
+.ch-category-divider {
+  height: 1px;
+  margin-bottom: 16px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(var(--section-rgb), 0.35),
+    #ffffff09 60%,
+    transparent
+  );
+}
+
+/* =========================================
+   SINGLE-ROW MOVIE AND EVENT CARDS
+========================================= */
+
+.customer-home .ch-category-section .ch-movie-grid,
+.customer-home .ch-category-section .ch-event-grid {
+  display: flex;
+
+  flex-wrap: nowrap;
+
+  gap: 15px;
+
+  overflow-x: auto;
+
+  padding: 7px 3px 16px;
+
+  margin: 0;
+
+  scroll-behavior: smooth;
+
+  scroll-snap-type: x proximity;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    rgba(var(--section-rgb), 0.4)
+    transparent;
+}
+
+/* Compact Movie Cards */
+
+.customer-home .ch-category-section .ch-movie-card {
+  flex: 0 0 185px;
+
+  min-width: 185px;
+  max-width: 185px;
+
+  scroll-snap-align: start;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Compact Event Cards */
+
+.customer-home .ch-category-section .ch-event-card {
+  flex: 0 0 265px;
+
+  min-width: 265px;
+  max-width: 265px;
+
+  scroll-snap-align: start;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+/* Theme-Based Individual Card Highlight */
+
+.customer-home .ch-category-section .ch-movie-card:hover,
+.customer-home .ch-category-section .ch-event-card:hover {
+  transform: translateY(-5px);
+
+  border-color: var(--section-accent);
+
+  box-shadow:
+    0 8px 25px #00000040,
+    0 0 20px rgba(var(--section-rgb), 0.2);
+}
+
+/* Card Title Highlight */
+
+.customer-home .ch-category-section .ch-movie-card:hover h3,
+.customer-home .ch-category-section .ch-event-card:hover h3 {
+  color: var(--section-accent);
+
+  text-shadow: 0 0 15px rgba(
+    var(--section-rgb),
+    0.2
+  );
+}
+
+/* =========================================
+   SECTION SCROLLBAR
+========================================= */
+
+.ch-category-section .ch-movie-grid::-webkit-scrollbar,
+.ch-category-section .ch-event-grid::-webkit-scrollbar {
+  height: 5px;
+}
+
+.ch-category-section .ch-movie-grid::-webkit-scrollbar-track,
+.ch-category-section .ch-event-grid::-webkit-scrollbar-track {
+  background: #ffffff05;
+  border-radius: 20px;
+}
+
+.ch-category-section .ch-movie-grid::-webkit-scrollbar-thumb,
+.ch-category-section .ch-event-grid::-webkit-scrollbar-thumb {
+  background: rgba(
+    var(--section-rgb),
+    0.35
+  );
+
+  border-radius: 20px;
+}
+
+/* =========================================
+   PREMIUM EMPTY STATE
+========================================= */
+
+.ch-category-empty {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 120px;
+
+  padding: 22px;
+
+  border: 1px dashed rgba(
+    var(--section-rgb),
+    0.18
+  );
+
+  border-radius: 13px;
+
+  background: rgba(
+    var(--section-rgb),
+    0.025
+  );
+
+  text-align: center;
+
+  transition: 0.3s ease;
+}
+
+.ch-category-empty:hover {
+  border-color: rgba(
+    var(--section-rgb),
+    0.45
+  );
+
+  background: rgba(
+    var(--section-rgb),
+    0.045
+  );
+}
+
+.ch-category-empty-icon {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  color: var(--section-accent);
+
+  border-radius: 12px;
+
+  background: rgba(
+    var(--section-rgb),
+    0.08
+  );
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.ch-category-empty:hover .ch-category-empty-icon {
+  transform: translateY(-4px) rotate(-5deg);
+
+  box-shadow: 0 0 20px rgba(
+    var(--section-rgb),
+    0.15
+  );
+}
+
+.ch-category-empty h3 {
+  color: #ddd6ed;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  margin: 4px 0 0;
+}
+
+.ch-category-empty p {
+  font-size: 11px;
+
+  color: #9893aa;
+
+  margin: 0;
+}
+
+/* =========================================
+   COMPLETED AND LIVE STATUS BADGES
+========================================= */
+
+.ch-status.completed {
+  color: #fbbf24;
+
+  background: #251c09e8;
+
+  border: 1px solid #fbbf2450;
+}
+
+.ch-status.ongoing {
+  color: #fb7185;
+
+  background: #350f1ce8;
+
+  border: 1px solid #fb718550;
+}
+
+/* =========================================
+   PREMIUM SECTION ANIMATIONS
+========================================= */
+
+@keyframes chCategoryEntrance {
+  from {
+    opacity: 0;
+
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@keyframes chLivePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(
+      251,
+      113,
+      133,
+      0.5
+    );
+  }
+
+  50% {
+    box-shadow: 0 0 0 6px rgba(
+      251,
+      113,
+      133,
+      0
+    );
+  }
+}
+
+.ch-theme-now {
+  animation-delay: 0.05s;
+}
+
+.ch-theme-upcoming {
+  animation-delay: 0.1s;
+}
+
+.ch-theme-live {
+  animation-delay: 0.15s;
+}
+
+.ch-theme-events {
+  animation-delay: 0.2s;
+}
+
+.ch-theme-completed {
+  animation-delay: 0.25s;
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .ch-category-section {
+    padding: 18px;
+    border-radius: 17px;
+  }
+
+  .ch-category-header {
+    flex-wrap: wrap;
+  }
+
+  .ch-category-title-wrapper h2 {
+    font-size: 18px;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+  .ch-category-section {
+    padding: 14px;
+    margin: 15px 0;
+
+    border-radius: 15px;
+  }
+
+  .ch-category-header {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ch-category-icon {
+    width: 37px;
+    height: 37px;
+
+    border-radius: 10px;
+  }
+
+  .ch-category-icon svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .ch-category-title-wrapper h2 {
+    font-size: 16px;
+  }
+
+  .ch-category-title-wrapper p {
+    font-size: 10px;
+  }
+
+  .ch-category-actions {
+    gap: 6px;
+  }
+
+  .ch-category-badge {
+    font-size: 9px;
+  }
+
+  .ch-category-count {
+    font-size: 10px;
+  }
+
+  .customer-home .ch-category-section .ch-movie-card {
+    flex-basis: 155px;
+
+    min-width: 155px;
+    max-width: 155px;
+  }
+
+  .customer-home .ch-category-section .ch-event-card {
+    flex-basis: 225px;
+
+    min-width: 225px;
+    max-width: 225px;
+  }
+
+  .customer-home .ch-category-section .ch-movie-grid,
+  .customer-home .ch-category-section .ch-event-grid {
+    gap: 12px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-category-section,
+  .ch-category-section *,
+  .ch-category-section *::before,
+  .ch-category-section *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ch-category-section *:hover {
+    transform: none !important;
+  }
+}
+
+/* =========================================
+   ENTERTAINHUB — CINEMATIC FULL IMAGE HERO
+========================================= */
+
+.customer-home .ch-hero.ch-image-hero {
+  position: relative;
+  isolation: isolate;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+  min-height: 400px;
+
+  box-sizing: border-box;
+
+  padding: 36px 40px;
+  margin-bottom: 24px;
+
+  overflow: hidden;
+
+  border: 1px solid #8b5cf645;
+  border-radius: 22px;
+
+  background: #09090f;
+
+  box-shadow:
+    0 15px 45px #00000050,
+    0 0 30px #8b5cf610;
+
+  transition:
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* =========================================
+   FULL CARD BACKGROUND IMAGE
+========================================= */
+
+.ch-hero.ch-image-hero::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -3;
+
+  background-image: url("/images/hero-background.jpg");
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  opacity: 1;
+
+  filter:
+    brightness(0.95)
+    contrast(1.04)
+    saturate(1.05);
+
+  transform: none;
+
+  pointer-events: none;
+
+  transition: filter 0.5s ease;
+
+  animation: none;
+}
+
+/* Improve Image Brightness On Hover */
+
+.ch-hero.ch-image-hero:hover::before {
+  filter:
+    brightness(1.08)
+    contrast(1.04)
+    saturate(1.1);
+
+  transform: none;
+}
+
+/* =========================================
+   CINEMATIC IMAGE BLENDING
+========================================= */
+
+.ch-image-hero .ch-hero-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -2;
+
+  pointer-events: none;
+
+  background:
+
+    /* Left Side Text Readability */
+
+    linear-gradient(
+      90deg,
+      rgba(8, 6, 15, 0.98) 0%,
+      rgba(8, 6, 15, 0.91) 20%,
+      rgba(8, 6, 15, 0.72) 38%,
+      rgba(8, 6, 15, 0.35) 58%,
+      rgba(8, 6, 15, 0.08) 80%,
+      transparent 100%
+    ),
+
+    /* Bottom Cinematic Gradient */
+
+    linear-gradient(
+      0deg,
+      rgba(9, 9, 15, 0.9) 0%,
+      rgba(9, 9, 15, 0.15) 35%,
+      transparent 65%
+    ),
+
+    /* Purple Ambient Lighting */
+
+    radial-gradient(
+      ellipse at top left,
+      rgba(124, 58, 237, 0.22),
+      transparent 65%
+    );
+}
+
+/* =========================================
+   ANIMATED PREMIUM BORDER
+========================================= */
+
+.ch-hero.ch-image-hero::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 10%;
+  right: 10%;
+
+  width: auto;
+  height: 2px;
+
+  z-index: 5;
+
+  border-radius: 20px;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #8b5cf6,
+    #d946ef,
+    #c4b5fd,
+    #8b5cf6,
+    transparent
+  );
+
+  background-size: 200% auto;
+
+  opacity: 0.65;
+
+  animation:
+    chCinematicBorder 5s linear infinite;
+
+  transition: opacity 0.35s ease;
+}
+
+.ch-hero.ch-image-hero:hover {
+  border-color: #a78bfa90;
+
+  box-shadow:
+    0 15px 50px #00000060,
+    0 0 35px #8b5cf625;
+}
+
+.ch-hero.ch-image-hero:hover::after {
+  opacity: 1;
+}
+
+/* =========================================
+   PREMIUM HERO CONTENT
+========================================= */
+
+.ch-image-hero .ch-hero-content {
+  position: relative;
+
+  z-index: 2;
+
+  flex: 0 1 590px;
+
+  width: 100%;
+  max-width: 590px;
+  min-width: 0;
+
+  margin: 0;
+
+  text-align: left;
+
+  animation:
+    chCinematicContentIn 0.75s ease backwards;
+}
+
+/* =========================================
+   ENTERTAINMENT BADGE
+========================================= */
+
+.ch-image-hero .ch-hero-badge {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 7px;
+
+  padding: 8px 13px;
+
+  border: 1px solid #a78bfa50;
+
+  border-radius: 30px;
+
+  background: #8b5cf620;
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  color: #ddd6fe;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.ch-image-hero .ch-hero-badge:hover {
+  transform: translateY(-3px);
+
+  background: #8b5cf630;
+
+  box-shadow: 0 0 25px #8b5cf640;
+}
+
+.ch-image-hero .ch-hero-badge svg {
+  transition: transform 0.4s ease;
+}
+
+.ch-image-hero .ch-hero-badge:hover svg {
+  transform: rotate(20deg) scale(1.15);
+}
+
+/* =========================================
+   CUSTOMER WELCOME MESSAGE
+========================================= */
+
+.ch-image-hero .ch-welcome {
+  margin: 18px 0 8px;
+
+  color: #c4b5fd;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  text-shadow: 0 2px 10px #000000;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.ch-image-hero .ch-welcome:hover {
+  color: #ffffff;
+
+  transform: translateX(3px);
+}
+
+/* =========================================
+   CINEMATIC HERO HEADING
+========================================= */
+
+.ch-image-hero h1 {
+  margin: 10px 0 16px;
+
+  font-size: clamp(34px, 4.3vw, 64px);
+
+  font-weight: 800;
+
+  line-height: 1.08;
+
+  letter-spacing: -2px;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 5px 25px #00000090,
+    0 0 35px #00000050;
+
+  transition: text-shadow 0.35s ease;
+}
+
+.ch-image-hero h1:hover {
+  text-shadow:
+    0 0 30px #8b5cf650,
+    0 5px 25px #00000090;
+}
+
+/* Animated Gradient Enjoy Text */
+
+.ch-image-hero h1 span {
+  display: inline-block;
+
+  background: linear-gradient(
+    90deg,
+    #c4b5fd,
+    #a78bfa,
+    #e879f9,
+    #c4b5fd
+  );
+
+  background-size: 250% auto;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation:
+    chCinematicBorder 6s linear infinite;
+}
+
+/* =========================================
+   HERO DESCRIPTION
+========================================= */
+
+.ch-image-hero .ch-hero-description {
+  max-width: 470px;
+
+  margin: 0 0 25px;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color: #d4cde3;
+
+  text-shadow: 0 2px 10px #00000090;
+
+  transition: color 0.3s ease;
+}
+
+.ch-image-hero .ch-hero-description:hover {
+  color: #ffffff;
+}
+
+/* =========================================
+   HERO ACTION BUTTONS
+========================================= */
+
+.ch-image-hero .ch-hero-actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+}
+
+/* Primary Explore Movies Button */
+
+.ch-image-hero .ch-primary-button {
+  position: relative;
+
+  overflow: hidden;
+
+  min-height: 44px;
+
+  padding: 12px 18px;
+
+  border-radius: 10px;
+
+  border: 1px solid #a78bfa60;
+
+  background: linear-gradient(
+    110deg,
+    #8b5cf6,
+    #7c3aed,
+    #4f46e5
+  );
+
+  background-size: 200% auto;
+
+  color: white;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  box-shadow: 0 5px 25px #7c3aed40;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background-position 0.5s ease;
+}
+
+.ch-image-hero .ch-primary-button:hover {
+  transform: translateY(-4px);
+
+  background-position: right center;
+
+  box-shadow:
+    0 8px 30px #8b5cf670,
+    0 0 20px #8b5cf625;
+}
+
+/* Button Reflection */
+
+.ch-image-hero .ch-primary-button::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: -100%;
+
+  width: 60%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #ffffff30,
+    transparent
+  );
+
+  transform: skewX(-25deg);
+
+  pointer-events: none;
+
+  transition: left 0.7s ease;
+}
+
+.ch-image-hero .ch-primary-button:hover::after {
+  left: 150%;
+}
+
+/* Secondary Explore Events Button */
+
+.ch-image-hero .ch-secondary-button {
+  min-height: 44px;
+
+  padding: 12px 18px;
+
+  border-radius: 10px;
+  border: 1px solid #ffffff35;
+
+  background: #ffffff0d;
+
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  color: #e9d5ff;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+.ch-image-hero .ch-secondary-button:hover {
+  transform: translateY(-4px);
+
+  background: #8b5cf625;
+
+  border-color: #a78bfa80;
+
+  box-shadow: 0 5px 25px #8b5cf635;
+}
+
+/* Animated Button Icons */
+
+.ch-image-hero .ch-primary-button svg,
+.ch-image-hero .ch-secondary-button svg {
+  transition: transform 0.35s ease;
+}
+
+.ch-image-hero .ch-primary-button:hover svg,
+.ch-image-hero .ch-secondary-button:hover svg {
+  transform: scale(1.12);
+}
+
+/* =========================================
+   PREMIUM ANIMATIONS
+========================================= */
+
+@keyframes chCinematicBorder {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes chCinematicContentIn {
+  from {
+    opacity: 0;
+
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .customer-home .ch-hero.ch-image-hero {
+    min-height: 350px;
+
+    padding: 28px;
+  }
+
+  .ch-image-hero .ch-hero-content {
+    max-width: 480px;
+  }
+
+  .ch-image-hero h1 {
+    font-size: 44px;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+  .customer-home .ch-hero.ch-image-hero {
+    min-height: 355px;
+
+    padding: 22px;
+
+    border-radius: 16px;
+  }
+
+  .ch-hero.ch-image-hero::before {
+    background-position: 65% center;
+  }
+
+  .ch-image-hero .ch-hero-overlay {
+    background: linear-gradient(
+      90deg,
+      #09090fee,
+      #09090f85
+    );
+  }
+
+  .ch-image-hero .ch-hero-content {
+    max-width: 100%;
+  }
+
+  .ch-image-hero h1 {
+    font-size: 36px;
+
+    letter-spacing: -1px;
+  }
+
+  .ch-image-hero .ch-hero-description {
+    font-size: 12px;
+  }
+
+  .ch-image-hero .ch-hero-actions {
+    gap: 9px;
+  }
+
+  .ch-image-hero .ch-primary-button,
+  .ch-image-hero .ch-secondary-button {
+    padding: 11px 13px;
+
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-image-hero,
+  .ch-image-hero *,
+  .ch-image-hero::before,
+  .ch-image-hero::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .ch-image-hero *:hover {
+    transform: none !important;
+  }
+}

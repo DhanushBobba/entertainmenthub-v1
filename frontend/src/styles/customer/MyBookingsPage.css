@@ -1,0 +1,3205 @@
+/* =========================================
+   ENTERTAINHUB PREMIUM MY BOOKINGS
+========================================= */
+
+.my-bookings-page {
+  --mb-primary: #8b5cf6;
+  --mb-muted: #a19bb5;
+  --mb-border: #ffffff12;
+  --mb-text: #f8f7ff;
+
+  color: var(--mb-text);
+  min-width: 0;
+
+  animation: mbFadeIn 0.5s ease both;
+}
+
+/* =========================================
+   PREMIUM HERO
+========================================= */
+
+.mb-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 24px;
+  margin-bottom: 20px;
+
+  border: 1px solid #8b5cf640;
+  border-radius: 16px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #7c3aed40,
+      transparent 65%
+    ),
+    linear-gradient(
+      135deg,
+      #21162e,
+      #111019
+    );
+
+  box-shadow: 0 8px 30px #00000025;
+
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.mb-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(#ffffff04 1px, transparent 1px),
+    linear-gradient(90deg, #ffffff04 1px, transparent 1px);
+
+  background-size: 30px 30px;
+
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black
+  );
+}
+
+.mb-hero:hover {
+  border-color: #a78bfa80;
+  box-shadow: 0 8px 30px #8b5cf615;
+}
+
+.mb-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #c4b5fd;
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  font-weight: 700;
+}
+
+.mb-hero h1 {
+  margin: 10px 0 7px;
+  font-size: clamp(25px, 3vw, 34px);
+  letter-spacing: -1px;
+}
+
+.mb-hero h1 span {
+  background: linear-gradient(
+    90deg,
+    #c4b5fd,
+    #a78bfa,
+    #e879f9,
+    #c4b5fd
+  );
+
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: mbGradientFlow 7s linear infinite;
+}
+
+.mb-hero p {
+  margin: 0;
+  color: var(--mb-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   PREMIUM BUTTONS
+========================================= */
+
+.mb-primary-button,
+.mb-secondary-button,
+.mb-danger-button {
+  position: relative;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 15px;
+  border-radius: 9px;
+
+  color: white;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    background 0.3s;
+}
+
+.mb-primary-button {
+  border: 1px solid #a78bfa50;
+
+  background: linear-gradient(
+    135deg,
+    #9333ea,
+    #6d28d9,
+    #4f46e5
+  );
+
+  box-shadow: 0 5px 18px #7c3aed30;
+}
+
+.mb-primary-button:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 8px 25px #8b5cf650;
+}
+
+.mb-primary-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    #ffffff25 50%,
+    transparent 75%
+  );
+
+  transform: translateX(-120%);
+}
+
+.mb-primary-button:hover::after {
+  animation: mbShine 0.8s ease;
+}
+
+.mb-secondary-button {
+  background: #252032;
+  border: 1px solid #ffffff15;
+  color: #ddd6fe;
+}
+
+.mb-secondary-button:hover:not(:disabled) {
+  background: #352847;
+  transform: translateY(-2px);
+}
+
+.mb-danger-button {
+  background: linear-gradient(
+    135deg,
+    #f43f5e,
+    #be123c
+  );
+
+  border: 1px solid #fb718550;
+}
+
+.mb-danger-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px #f43f5e40;
+}
+
+/* =========================================
+   COMPACT BOOKING SUMMARY CARDS
+========================================= */
+
+.mb-summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 13px;
+  margin-bottom: 20px;
+}
+
+.mb-stat-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 0;
+  min-height: 85px;
+  padding: 14px;
+
+  border: 1px solid var(--mb-border);
+  border-radius: 12px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      color-mix(
+        in srgb,
+        var(--accent) 10%,
+        transparent
+      ),
+      transparent 70%
+    ),
+    linear-gradient(
+      145deg,
+      #191622,
+      #111019
+    );
+
+  color: white;
+  text-align: left;
+  cursor: pointer;
+
+  animation: mbSlideUp 0.5s ease backwards;
+  animation-delay: var(--delay, 0s);
+
+  transition:
+    transform 0.35s,
+    border-color 0.35s,
+    box-shadow 0.35s;
+}
+
+.mb-stat-card::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: 15%;
+  right: 15%;
+
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    transparent
+  );
+
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+
+.mb-stat-card:hover,
+.mb-stat-card.selected {
+  border-color: var(--accent);
+
+  box-shadow: 0 6px 22px
+    color-mix(
+      in srgb,
+      var(--accent) 20%,
+      transparent
+    );
+}
+
+.mb-stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.mb-stat-card:hover::before,
+.mb-stat-card.selected::before {
+  opacity: 1;
+}
+
+.mb-stat-icon {
+  width: 39px;
+  height: 39px;
+
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  color: var(--accent);
+
+  background: color-mix(
+    in srgb,
+    var(--accent) 13%,
+    transparent
+  );
+
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+}
+
+.mb-stat-card:hover .mb-stat-icon {
+  transform: scale(1.12) rotate(-6deg);
+
+  box-shadow: 0 0 18px
+    color-mix(
+      in srgb,
+      var(--accent) 30%,
+      transparent
+    );
+}
+
+.mb-stat-content {
+  min-width: 0;
+}
+
+.mb-stat-content span {
+  display: block;
+  color: var(--mb-muted);
+  font-size: 11px;
+  margin-bottom: 5px;
+}
+
+.mb-stat-content strong {
+  display: block;
+  font-size: 25px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+
+  transition: color 0.3s;
+}
+
+.mb-stat-card:hover strong,
+.mb-stat-card.selected strong {
+  color: var(--accent);
+}
+
+/* =========================================
+   SEARCH AND FILTERS
+========================================= */
+
+.mb-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  padding: 12px;
+  margin-bottom: 22px;
+
+  border: 1px solid #ffffff12;
+  border-radius: 12px;
+
+  background: #15121e;
+}
+
+.mb-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+
+  min-width: 180px;
+  padding: 10px 12px;
+
+  border: 1px solid #ffffff18;
+  border-radius: 8px;
+
+  background: #100e17;
+  color: #a78bfa;
+
+  transition: 0.3s;
+}
+
+.mb-search:focus-within {
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 0 0 3px #8b5cf615,
+    0 0 15px #8b5cf615;
+}
+
+.mb-search input {
+  width: 100%;
+  min-width: 0;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  color: white;
+  font: inherit;
+  font-size: 12px;
+}
+
+.mb-filters {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mb-filters select {
+  padding: 10px 12px;
+
+  background: #211b2e;
+  border: 1px solid #ffffff18;
+
+  color: #ddd6fe;
+  border-radius: 8px;
+  font-size: 12px;
+
+  cursor: pointer;
+  outline: none;
+
+  transition: 0.3s;
+}
+
+.mb-filters select:hover,
+.mb-filters select:focus {
+  border-color: #a78bfa;
+  background: #2b223a;
+}
+
+.mb-refresh-button {
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #8b5cf630;
+  border-radius: 8px;
+
+  background: #8b5cf615;
+  color: #c4b5fd;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.mb-refresh-button:hover:not(:disabled) {
+  background: #7c3aed;
+  color: white;
+}
+
+.mb-refresh-button:hover:not(:disabled) svg {
+  animation: mbRotate 0.6s ease;
+}
+
+/* =========================================
+   SECTION HEADING
+========================================= */
+
+.mb-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.mb-section-heading h2 {
+  margin: 0;
+  font-size: 19px;
+  letter-spacing: -0.4px;
+}
+
+.mb-section-heading > span {
+  color: #c4b5fd;
+  background: #8b5cf615;
+
+  border: 1px solid #8b5cf630;
+  border-radius: 7px;
+
+  padding: 6px 10px;
+  font-size: 11px;
+}
+
+/* =========================================
+   DIGITAL TICKET GRID
+========================================= */
+
+.mb-booking-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(360px, 100%), 1fr)
+  );
+
+  gap: 17px;
+}
+
+/* =========================================
+   PREMIUM DIGITAL TICKET CARD
+========================================= */
+
+.mb-ticket-card {
+  position: relative;
+
+  display: flex;
+
+  min-width: 0;
+  overflow: hidden;
+
+  border: 1px solid #8b5cf625;
+  border-radius: 14px;
+
+  background:
+    radial-gradient(
+      ellipse at bottom right,
+      #8b5cf609,
+      transparent 70%
+    ),
+    linear-gradient(
+      145deg,
+      #1c1729,
+      #111019
+    );
+
+  box-shadow: 0 5px 20px #00000025;
+
+  animation: mbSlideUp 0.6s ease backwards;
+  animation-delay: var(--delay, 0s);
+
+  transition:
+    transform 0.35s,
+    box-shadow 0.35s,
+    border-color 0.35s;
+}
+
+.mb-ticket-card:hover {
+  transform: translateY(-5px);
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 10px 25px #8b5cf625,
+    0 0 20px #8b5cf615;
+}
+
+/* =========================================
+   BOOKING POSTER
+========================================= */
+
+.mb-ticket-image {
+  position: relative;
+  overflow: hidden;
+
+  width: 112px;
+  flex-shrink: 0;
+
+  background: #241a33;
+  border-right: 1px dashed #ffffff20;
+}
+
+.mb-ticket-image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  object-fit: cover;
+
+  transition:
+    transform 0.65s,
+    filter 0.4s;
+}
+
+.mb-ticket-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+
+.mb-type-badge {
+  position: absolute;
+  left: 7px;
+  bottom: 8px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 5px 7px;
+
+  border-radius: 6px;
+  border: 1px solid #ffffff30;
+
+  color: white;
+  background: #100b20d9;
+
+  font-size: 10px;
+
+  backdrop-filter: blur(8px);
+}
+
+.mb-image-fallback {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+
+  color: #a78bfa;
+}
+
+/* =========================================
+   TICKET INFORMATION
+========================================= */
+
+.mb-ticket-content {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+}
+
+.mb-ticket-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-bottom: 14px;
+}
+
+.mb-ticket-heading > div {
+  overflow: hidden;
+  min-width: 0;
+}
+
+.mb-booking-reference {
+  display: block;
+  color: #9991ab;
+  font-size: 9px;
+  margin-bottom: 5px;
+}
+
+.mb-ticket-heading h3 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: color 0.3s;
+}
+
+.mb-ticket-card:hover h3 {
+  color: #c4b5fd;
+}
+
+.mb-ticket-information {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  margin-bottom: 15px;
+}
+
+.mb-ticket-information > div {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  color: #aaa4bf;
+  font-size: 11px;
+}
+
+.mb-ticket-information svg {
+  color: #a78bfa;
+}
+
+/* =========================================
+   PREMIUM STATUS BADGES
+========================================= */
+
+.mb-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  width: fit-content;
+
+  padding: 5px 8px;
+
+  border: 1px solid #ffffff15;
+  border-radius: 20px;
+
+  background: #ffffff08;
+  color: #c4b5fd;
+
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  white-space: nowrap;
+}
+
+.mb-status-dot {
+  width: 5px;
+  height: 5px;
+
+  flex-shrink: 0;
+
+  background: currentColor;
+  border-radius: 50%;
+}
+
+.mb-status.confirmed,
+.mb-status.completed,
+.mb-status.paid {
+  color: #34d399;
+  background: #10b98115;
+  border-color: #10b98130;
+}
+
+.mb-status.confirmed .mb-status-dot {
+  animation: mbStatusPulse 2s infinite;
+}
+
+.mb-status.pending {
+  color: #fbbf24;
+  background: #f59e0b15;
+  border-color: #f59e0b30;
+}
+
+.mb-status.cancelled,
+.mb-status.failed {
+  color: #fb7185;
+  background: #f43f5e15;
+  border-color: #f43f5e30;
+}
+
+.mb-status.refunded {
+  color: #93c5fd;
+  background: #3b82f615;
+  border-color: #3b82f630;
+}
+
+/* =========================================
+   TICKET PAYMENT ROW
+========================================= */
+
+.mb-payment-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  padding-top: 10px;
+  margin-bottom: 12px;
+
+  border-top: 1px dashed #ffffff15;
+}
+
+.mb-ticket-price small,
+.mb-payment-status small {
+  display: block;
+
+  margin-bottom: 5px;
+  color: var(--mb-muted);
+  font-size: 10px;
+}
+
+.mb-ticket-price strong {
+  color: #c4b5fd;
+  font-size: 20px;
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================
+   TICKET ACTIONS
+========================================= */
+
+.mb-ticket-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.mb-view-button,
+.mb-cancel-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  padding: 8px 10px;
+  border-radius: 7px;
+
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    transform 0.3s,
+    background 0.3s,
+    box-shadow 0.3s;
+}
+
+.mb-view-button {
+  flex: 1;
+
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #9333ea,
+    #6d28d9
+  );
+
+  border: 1px solid #a78bfa40;
+}
+
+.mb-view-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 5px 18px #8b5cf645;
+}
+
+.mb-cancel-button {
+  color: #fb7185;
+  background: #f43f5e12;
+  border: 1px solid #f43f5e30;
+}
+
+.mb-cancel-button:hover:not(:disabled) {
+  color: white;
+  background: #e11d48;
+
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px #f43f5e30;
+}
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.mb-empty {
+  min-height: 260px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  border: 1px dashed #8b5cf630;
+  border-radius: 15px;
+
+  background: #15121e;
+  color: #a78bfa;
+}
+
+.mb-empty-icon {
+  width: 65px;
+  height: 65px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #8b5cf640;
+  border-radius: 17px;
+
+  background: #8b5cf615;
+}
+
+.mb-empty h3 {
+  margin: 0;
+  font-size: 19px;
+  color: #e9d5ff;
+}
+
+.mb-empty p {
+  color: var(--mb-muted);
+
+  font-size: 12px;
+  margin: 0 0 8px;
+}
+
+/* =========================================
+   PAGINATION
+========================================= */
+
+.mb-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+
+  margin-top: 25px;
+}
+
+.mb-pagination span {
+  color: var(--mb-muted);
+  font-size: 12px;
+}
+
+.mb-pagination button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 9px 13px;
+
+  color: #c4b5fd;
+  background: #8b5cf615;
+
+  border: 1px solid #8b5cf630;
+  border-radius: 8px;
+
+  font-size: 12px;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.mb-pagination button:hover:not(:disabled) {
+  background: #7c3aed;
+  color: white;
+}
+
+.my-bookings-page button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* =========================================
+   PREMIUM MODAL
+========================================= */
+
+.mb-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: #05030bc9;
+  backdrop-filter: blur(12px);
+
+  animation: mbFadeIn 0.25s ease;
+}
+
+.mb-modal {
+  box-sizing: border-box;
+
+  width: 470px;
+  max-width: 100%;
+  max-height: 90vh;
+  max-height: 90dvh;
+
+  overflow-y: auto;
+
+  padding: 24px;
+
+  border: 1px solid #8b5cf650;
+  border-radius: 18px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #8b5cf615,
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #21192e,
+      #12101a
+    );
+
+  box-shadow:
+    0 20px 70px #00000080,
+    0 0 35px #8b5cf615;
+
+  animation: mbModalIn 0.35s ease both;
+}
+
+.mb-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
+
+.mb-modal-icon {
+  width: 45px;
+  height: 45px;
+
+  display: grid;
+  place-items: center;
+
+  color: #c4b5fd;
+  background: #8b5cf620;
+
+  border: 1px solid #8b5cf640;
+  border-radius: 12px;
+}
+
+.mb-close {
+  width: 31px;
+  height: 31px;
+
+  display: grid;
+  place-items: center;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #ffffff08;
+  color: #a5a0b8;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.mb-close:hover {
+  background: #f43f5e20;
+  color: #fb7185;
+  transform: rotate(90deg);
+}
+
+.mb-modal h2 {
+  margin: 0 0 7px;
+  font-size: 23px;
+  letter-spacing: -0.6px;
+}
+
+.mb-modal-subtitle {
+  color: var(--mb-muted);
+
+  font-size: 12px;
+  margin: 0 0 20px;
+}
+
+/* =========================================
+   DIGITAL TICKET DESIGN
+========================================= */
+
+.mb-digital-ticket {
+  padding: 17px;
+
+  border: 1px solid #8b5cf650;
+  border-radius: 13px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #8b5cf615,
+      transparent 70%
+    ),
+    #16121e;
+}
+
+.mb-digital-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mb-digital-heading h3 {
+  margin: 0;
+
+  font-size: 19px;
+  color: #e9d5ff;
+
+  overflow-wrap: anywhere;
+}
+
+/* Ticket Perforation */
+
+.mb-ticket-divider {
+  position: relative;
+
+  margin: 19px -17px;
+
+  border-top: 1px dashed #a78bfa50;
+}
+
+.mb-ticket-divider::before,
+.mb-ticket-divider::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+
+  width: 15px;
+  height: 15px;
+
+  border-radius: 50%;
+  background: #21192e;
+}
+
+.mb-ticket-divider::before {
+  left: -8px;
+}
+
+.mb-ticket-divider::after {
+  right: -8px;
+}
+
+/* Ticket Details */
+
+.mb-digital-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 17px;
+}
+
+.mb-digital-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.mb-digital-grid small {
+  font-size: 10px;
+  color: var(--mb-muted);
+}
+
+.mb-digital-grid strong {
+  font-size: 13px;
+  text-transform: capitalize;
+  overflow-wrap: anywhere;
+}
+
+.mb-full-width {
+  grid-column: 1 / -1;
+}
+
+.mb-digital-grid .mb-digital-amount {
+  color: #c4b5fd;
+  font-size: 22px;
+  font-weight: 750;
+}
+
+.mb-ticket-id {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  text-align: center;
+}
+
+.mb-ticket-id small {
+  color: var(--mb-muted);
+  font-size: 10px;
+}
+
+.mb-ticket-id strong {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  overflow-wrap: anywhere;
+}
+
+.mb-ticket-note {
+  color: #a19bb5;
+  font-size: 11px;
+  line-height: 1.6;
+
+  text-align: center;
+}
+
+.mb-full-button {
+  width: 100%;
+  box-sizing: border-box;
+
+  margin-top: 10px;
+}
+
+/* =========================================
+   CANCELLATION MODAL
+========================================= */
+
+.mb-cancel-modal {
+  width: 410px;
+  text-align: center;
+}
+
+.mb-warning-icon {
+  width: 67px;
+  height: 67px;
+
+  display: grid;
+  place-items: center;
+
+  margin: 0 auto 18px;
+
+  color: #fb7185;
+  background: #f43f5e15;
+
+  border: 1px solid #f43f5e50;
+  border-radius: 20px;
+
+  animation: mbWarningPulse 2s infinite;
+}
+
+.mb-cancel-modal p {
+  color: var(--mb-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.mb-cancel-modal p strong {
+  color: #f5f3ff;
+}
+
+.mb-confirm-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-top: 22px;
+}
+
+.mb-confirm-actions button {
+  flex: 1;
+}
+
+/* =========================================
+   LOADING ANIMATION
+========================================= */
+
+.mb-spinner {
+  animation: mbRotate 1s linear infinite;
+}
+
+/* =========================================
+   PREMIUM ANIMATIONS
+========================================= */
+
+@keyframes mbRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mbFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mbSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes mbModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes mbGradientFlow {
+  from {
+    background-position: 0% 50%;
+  }
+
+  to {
+    background-position: 300% 50%;
+  }
+}
+
+@keyframes mbShine {
+  from {
+    transform: translateX(-120%);
+  }
+
+  to {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes mbStatusPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 #34d39950;
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px #34d39900;
+  }
+}
+
+@keyframes mbWarningPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 #f43f5e20;
+  }
+
+  50% {
+    box-shadow: 0 0 0 8px #f43f5e00;
+  }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1000px) {
+  .mb-summary-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .mb-hero {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 18px;
+  }
+
+  .mb-summary-grid {
+    gap: 10px;
+  }
+
+  .mb-stat-card {
+    min-height: 75px;
+    padding: 11px;
+    gap: 8px;
+  }
+
+  .mb-stat-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .mb-stat-content strong {
+    font-size: 21px;
+  }
+
+  .mb-booking-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .mb-search {
+    flex-basis: 100%;
+    min-width: 0;
+  }
+
+  .mb-ticket-image {
+    width: 95px;
+  }
+
+  .mb-ticket-content {
+    padding: 11px;
+  }
+
+  .mb-modal {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mb-ticket-image {
+    width: 77px;
+  }
+
+  .mb-ticket-heading h3 {
+    font-size: 14px;
+  }
+
+  .mb-ticket-information {
+    gap: 8px;
+  }
+
+  .mb-ticket-price strong {
+    font-size: 17px;
+  }
+
+  .mb-stat-content span {
+    font-size: 10px;
+  }
+
+  .mb-pagination {
+    gap: 8px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.my-bookings-page button:focus-visible,
+.my-bookings-page a:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .my-bookings-page,
+  .my-bookings-page *,
+  .my-bookings-page *::before,
+  .my-bookings-page *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .mb-ticket-card:hover,
+  .mb-ticket-card:hover img,
+  .mb-stat-card:hover,
+  .mb-stat-card:hover .mb-stat-icon,
+  .mb-primary-button:hover,
+  .mb-view-button:hover,
+  .mb-cancel-button:hover {
+    transform: none !important;
+  }
+}
+
+
+/* =========================================
+   ENTERTAINHUB — ULTRA PREMIUM MY BOOKINGS
+========================================= */
+
+.my-bookings-page {
+  --mb-primary: #8b5cf6;
+  --mb-muted: #a19bb5;
+  --mb-text: #f8f7ff;
+  --mb-border: #ffffff10;
+  --mb-surface: #14111e;
+
+  max-width: 1500px;
+  margin: 0 auto;
+
+  color: var(--mb-text);
+
+  animation: mbFadeIn 0.6s ease both;
+}
+
+.my-bookings-page,
+.my-bookings-page * {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   CINEMATIC HERO SECTION
+========================================= */
+
+.mb-hero {
+  min-height: 145px;
+
+  padding: 26px;
+  margin-bottom: 22px;
+
+  border-radius: 20px;
+  border-color: #8b5cf635;
+
+  background:
+    radial-gradient(
+      ellipse at 90% 0%,
+      #7c3aed35,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse at bottom left,
+      #c026d310,
+      transparent 55%
+    ),
+    linear-gradient(
+      135deg,
+      #20162e,
+      #111019
+    );
+
+  box-shadow:
+    0 10px 35px #00000035,
+    inset 0 1px 0 #ffffff0a;
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.mb-hero:hover {
+  border-color: #a78bfa80;
+
+  box-shadow:
+    0 15px 40px #00000040,
+    0 0 35px #8b5cf620;
+}
+
+/* Animated Hero Border */
+
+.mb-hero::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 10%;
+  right: 10%;
+
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #8b5cf6,
+    #e879f9,
+    #8b5cf6,
+    transparent
+  );
+
+  background-size: 200% auto;
+
+  border-radius: 10px;
+
+  opacity: 0.65;
+
+  pointer-events: none;
+
+  animation: mbGradientFlow 5s linear infinite;
+
+  transition: opacity 0.3s ease;
+}
+
+.mb-hero:hover::after {
+  opacity: 1;
+}
+
+/* Premium Eyebrow Badge */
+
+.mb-eyebrow {
+  width: fit-content;
+
+  padding: 6px 11px;
+
+  border: 1px solid #8b5cf630;
+  border-radius: 30px;
+
+  background: #8b5cf612;
+
+  font-size: 10px;
+  letter-spacing: 1.5px;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.mb-eyebrow:hover {
+  transform: translateY(-3px);
+
+  border-color: #a78bfa80;
+
+  box-shadow: 0 0 20px #8b5cf630;
+}
+
+/* Animated Hero Heading */
+
+.mb-hero h1 {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.mb-hero h1 span {
+  background: linear-gradient(
+    90deg,
+    #ddd6fe,
+    #a78bfa,
+    #e879f9,
+    #ddd6fe
+  );
+
+  background-size: 250% auto;
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: mbGradientFlow 6s linear infinite;
+}
+
+.mb-hero h1:hover {
+  text-shadow: 0 0 25px #8b5cf640;
+}
+
+.mb-hero p {
+  color: #b1a9c4;
+  font-size: 13px;
+  line-height: 1.7;
+
+  transition: color 0.3s ease;
+}
+
+.mb-hero p:hover {
+  color: #e9d5ff;
+}
+
+/* =========================================
+   COMPACT PREMIUM STATISTICS
+========================================= */
+
+.mb-summary-grid {
+  gap: 14px;
+
+  margin-bottom: 22px;
+}
+
+.mb-stat-card {
+  --accent: #a78bfa;
+
+  position: relative;
+  isolation: isolate;
+
+  min-height: 82px;
+
+  padding: 13px;
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--accent) 15%,
+    transparent
+  );
+
+  border-radius: 14px;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      color-mix(
+        in srgb,
+        var(--accent) 9%,
+        transparent
+      ),
+      transparent 70%
+    ),
+    linear-gradient(
+      145deg,
+      #191522,
+      #110f19
+    );
+
+  box-shadow: 0 6px 20px #00000020;
+
+  transition:
+    transform 0.35s cubic-bezier(
+      0.2, 0.8, 0.2, 1
+    ),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+/* Animated Reflection */
+
+.mb-stat-card::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: -100%;
+
+  width: 60%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #ffffff0c,
+    transparent
+  );
+
+  transform: skewX(-25deg);
+
+  pointer-events: none;
+
+  transition: left 0.75s ease;
+}
+
+.mb-stat-card:hover::after {
+  left: 150%;
+}
+
+.mb-stat-card:hover,
+.mb-stat-card.selected {
+  border-color: var(--accent);
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      color-mix(
+        in srgb,
+        var(--accent) 18%,
+        transparent
+      ),
+      transparent 75%
+    ),
+    #1a1624;
+
+  box-shadow:
+    0 10px 25px #00000035,
+    0 0 24px color-mix(
+      in srgb,
+      var(--accent) 20%,
+      transparent
+    );
+}
+
+.mb-stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.mb-stat-card:active {
+  transform: scale(0.98);
+}
+
+/* Premium Stat Icon */
+
+.mb-stat-icon {
+  width: 41px;
+  height: 41px;
+
+  border-radius: 11px;
+
+  border: 1px solid color-mix(
+    in srgb,
+    var(--accent) 25%,
+    transparent
+  );
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+.mb-stat-card:hover .mb-stat-icon {
+  transform: rotate(-10deg) scale(1.1);
+
+  background: color-mix(
+    in srgb,
+    var(--accent) 22%,
+    transparent
+  );
+
+  box-shadow: 0 0 22px color-mix(
+    in srgb,
+    var(--accent) 35%,
+    transparent
+  );
+}
+
+.mb-stat-content span {
+  font-size: 11px;
+
+  transition: color 0.3s ease;
+}
+
+.mb-stat-card:hover .mb-stat-content span {
+  color: #e5dff0;
+}
+
+.mb-stat-content strong {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.mb-stat-card:hover strong {
+  color: var(--accent);
+
+  text-shadow: 0 0 18px color-mix(
+    in srgb,
+    var(--accent) 30%,
+    transparent
+  );
+}
+
+/* =========================================
+   PREMIUM SEARCH AND FILTER TOOLBAR
+========================================= */
+
+.mb-toolbar {
+  padding: 13px;
+
+  border: 1px solid #8b5cf620;
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #181421,
+      #100e17
+    );
+
+  box-shadow: 0 5px 20px #00000020;
+
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.mb-toolbar:hover {
+  border-color: #8b5cf645;
+
+  box-shadow: 0 5px 20px #8b5cf60d;
+}
+
+.mb-search {
+  min-height: 43px;
+
+  border-radius: 10px;
+  border: 1px solid #ffffff12;
+
+  background: #0c0b12;
+
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.mb-search:hover {
+  border-color: #8b5cf650;
+
+  background: #15101e;
+}
+
+.mb-search:focus-within {
+  border-color: #a78bfa;
+
+  box-shadow:
+    0 0 0 3px #8b5cf615,
+    0 0 22px #8b5cf615;
+}
+
+.mb-search svg {
+  color: #a19bb5;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.mb-search:hover svg,
+.mb-search:focus-within svg {
+  color: #c4b5fd;
+
+  transform: scale(1.12);
+}
+
+.mb-search input {
+  color: #f5f3ff;
+  font-size: 12px;
+}
+
+.mb-filters select {
+  border-radius: 9px;
+
+  background: #15111f;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.mb-filters select:hover,
+.mb-filters select:focus {
+  border-color: #a78bfa80;
+
+  background: #1d152c;
+
+  box-shadow: 0 0 15px #8b5cf615;
+}
+
+.mb-refresh-button {
+  border-radius: 9px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.mb-refresh-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  box-shadow: 0 0 20px #8b5cf635;
+
+  border-color: #a78bfa70;
+}
+
+/* =========================================
+   PREMIUM SECTION HEADING
+========================================= */
+
+.mb-section-heading {
+  padding: 5px 0 12px;
+
+  margin-bottom: 14px;
+
+  border-bottom: 1px solid #ffffff0b;
+}
+
+.mb-section-heading h2 {
+  font-size: 19px;
+
+  letter-spacing: -0.5px;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.mb-section-heading h2:hover {
+  color: #c4b5fd;
+
+  text-shadow: 0 0 15px #8b5cf635;
+}
+
+.mb-section-heading > span {
+  padding: 6px 10px;
+
+  border-radius: 7px;
+
+  background: #8b5cf610;
+
+  border: 1px solid #8b5cf625;
+
+  color: #c4b5fd;
+
+  font-size: 11px;
+
+  transition: 0.3s ease;
+}
+
+.mb-section-heading > span:hover {
+  background: #8b5cf620;
+
+  border-color: #8b5cf650;
+}
+
+/* =========================================
+   PREMIUM BOOKING GRID
+========================================= */
+
+.mb-booking-grid {
+  gap: 18px;
+
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(370px, 100%), 1fr)
+  );
+}
+
+/* =========================================
+   ULTRA PREMIUM DIGITAL BOOKING CARD
+========================================= */
+
+.mb-ticket-card {
+  --ticket-accent: #a78bfa;
+  --ticket-rgb: 167, 139, 250;
+
+  position: relative;
+  isolation: isolate;
+
+  border-radius: 17px;
+
+  border: 1px solid rgba(
+    var(--ticket-rgb),
+    0.2
+  );
+
+  background:
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(var(--ticket-rgb), 0.07),
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      #1b1725,
+      #100e17
+    );
+
+  box-shadow:
+    0 8px 25px #00000030,
+    inset 0 1px 0 #ffffff06;
+
+  transition:
+    transform 0.4s cubic-bezier(
+      0.2, 0.8, 0.2, 1
+    ),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+/* Automatic Booking Status Themes */
+
+/* Confirmed — Green */
+
+.mb-ticket-card:has(
+  .mb-ticket-heading .mb-status.confirmed
+) {
+  --ticket-accent: #34d399;
+  --ticket-rgb: 52, 211, 153;
+}
+
+/* Pending — Gold */
+
+.mb-ticket-card:has(
+  .mb-ticket-heading .mb-status.pending
+) {
+  --ticket-accent: #fbbf24;
+  --ticket-rgb: 251, 191, 36;
+}
+
+/* Completed — Blue */
+
+.mb-ticket-card:has(
+  .mb-ticket-heading .mb-status.completed
+) {
+  --ticket-accent: #60a5fa;
+  --ticket-rgb: 96, 165, 250;
+}
+
+/* Cancelled — Rose */
+
+.mb-ticket-card:has(
+  .mb-ticket-heading .mb-status.cancelled
+) {
+  --ticket-accent: #fb7185;
+  --ticket-rgb: 251, 113, 133;
+}
+
+/* Animated Ticket Top Border */
+
+.mb-ticket-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 15%;
+  right: 15%;
+
+  height: 2px;
+
+  z-index: 3;
+
+  border-radius: 10px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--ticket-accent),
+    transparent
+  );
+
+  opacity: 0.3;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease,
+    left 0.35s ease,
+    right 0.35s ease;
+}
+
+.mb-ticket-card:hover {
+  transform: translateY(-6px);
+
+  border-color: var(--ticket-accent);
+
+  background:
+    radial-gradient(
+      ellipse at bottom right,
+      rgba(var(--ticket-rgb), 0.14),
+      transparent 70%
+    ),
+    #1a1623;
+
+  box-shadow:
+    0 12px 35px #00000045,
+    0 0 25px rgba(
+      var(--ticket-rgb),
+      0.15
+    );
+}
+
+.mb-ticket-card:hover::before {
+  opacity: 1;
+
+  left: 5%;
+  right: 5%;
+}
+
+/* =========================================
+   PREMIUM BOOKING POSTER
+========================================= */
+
+.mb-ticket-image {
+  position: relative;
+
+  background: #21182e;
+
+  border-right: 1px dashed rgba(
+    var(--ticket-rgb),
+    0.25
+  );
+}
+
+.mb-ticket-image img {
+  object-fit: cover;
+
+  transition:
+    transform 0.7s ease,
+    filter 0.5s ease;
+}
+
+.mb-ticket-card:hover .mb-ticket-image img {
+  transform: scale(1.045);
+
+  filter:
+    brightness(1.08)
+    saturate(1.08);
+}
+
+/* Animated Poster Reflection */
+
+.mb-ticket-image::after {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: -100%;
+
+  width: 70%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #ffffff20,
+    transparent
+  );
+
+  transform: skewX(-25deg);
+
+  pointer-events: none;
+
+  transition: left 0.8s ease;
+}
+
+.mb-ticket-card:hover .mb-ticket-image::after {
+  left: 150%;
+}
+
+/* Premium Type Badge */
+
+.mb-type-badge {
+  z-index: 2;
+
+  border-color: rgba(
+    var(--ticket-rgb),
+    0.4
+  );
+
+  background: #110d1bd9;
+
+  border-radius: 7px;
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.mb-ticket-card:hover .mb-type-badge {
+  transform: translateY(-3px);
+
+  background: #151021f5;
+}
+
+.mb-type-badge svg {
+  color: var(--ticket-accent);
+}
+
+/* =========================================
+   BOOKING CARD INFORMATION
+========================================= */
+
+.mb-ticket-content {
+  padding: 15px;
+}
+
+.mb-ticket-heading {
+  margin-bottom: 12px;
+}
+
+.mb-booking-reference {
+  font-size: 9px;
+
+  letter-spacing: 0.5px;
+
+  color: #9893aa;
+
+  transition: color 0.3s ease;
+}
+
+.mb-ticket-card:hover .mb-booking-reference {
+  color: var(--ticket-accent);
+}
+
+.mb-ticket-heading h3 {
+  font-size: 16px;
+
+  font-weight: 750;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.mb-ticket-card:hover h3 {
+  color: var(--ticket-accent);
+
+  text-shadow: 0 0 15px rgba(
+    var(--ticket-rgb),
+    0.2
+  );
+}
+
+/* Individual Ticket Information Chips */
+
+.mb-ticket-information {
+  gap: 7px;
+
+  margin-bottom: 12px;
+}
+
+.mb-ticket-information > div {
+  padding: 6px 8px;
+
+  border-radius: 7px;
+
+  background: #ffffff04;
+
+  border: 1px solid #ffffff09;
+
+  font-size: 10px;
+
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.mb-ticket-information > div:hover {
+  transform: translateY(-2px);
+
+  color: #ffffff;
+
+  background: rgba(
+    var(--ticket-rgb),
+    0.08
+  );
+
+  border-color: rgba(
+    var(--ticket-rgb),
+    0.3
+  );
+}
+
+.mb-ticket-information svg {
+  color: var(--ticket-accent);
+
+  transition: transform 0.3s ease;
+}
+
+.mb-ticket-information > div:hover svg {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+/* =========================================
+   PREMIUM STATUS BADGES
+========================================= */
+
+.mb-status {
+  font-size: 10px;
+
+  font-weight: 650;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+.mb-status:hover {
+  transform: translateY(-3px);
+
+  filter: brightness(1.2);
+
+  box-shadow: 0 0 15px color-mix(
+    in srgb,
+    currentColor 20%,
+    transparent
+  );
+}
+
+.mb-status.confirmed {
+  color: #34d399;
+
+  background: #10b98115;
+  border-color: #34d39940;
+}
+
+.mb-status.completed {
+  color: #60a5fa;
+
+  background: #3b82f615;
+  border-color: #60a5fa40;
+}
+
+.mb-status.pending {
+  color: #fbbf24;
+
+  background: #f59e0b15;
+  border-color: #fbbf2440;
+}
+
+.mb-status.cancelled,
+.mb-status.failed {
+  color: #fb7185;
+
+  background: #f43f5e15;
+  border-color: #fb718540;
+}
+
+.mb-status.paid {
+  color: #34d399;
+
+  background: #10b98115;
+  border-color: #34d39940;
+}
+
+.mb-status.refunded {
+  color: #22d3ee;
+
+  background: #06b6d415;
+  border-color: #22d3ee40;
+}
+
+/* Status Pulse Animation */
+
+.mb-status.pending .mb-status-dot {
+  animation: mbStatusPulse 2s ease-in-out infinite;
+}
+
+/* =========================================
+   PREMIUM PAYMENT INFORMATION
+========================================= */
+
+.mb-payment-row {
+  padding: 11px 9px;
+
+  border: 1px solid rgba(
+    var(--ticket-rgb),
+    0.12
+  );
+
+  border-radius: 10px;
+
+  background: rgba(
+    var(--ticket-rgb),
+    0.035
+  );
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.mb-payment-row:hover {
+  border-color: rgba(
+    var(--ticket-rgb),
+    0.35
+  );
+
+  background: rgba(
+    var(--ticket-rgb),
+    0.07
+  );
+
+  box-shadow: 0 0 18px rgba(
+    var(--ticket-rgb),
+    0.1
+  );
+}
+
+.mb-ticket-price strong {
+  font-size: 22px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.6px;
+
+  color: #e9d5ff;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.mb-ticket-price:hover strong {
+  color: var(--ticket-accent);
+
+  text-shadow: 0 0 18px rgba(
+    var(--ticket-rgb),
+    0.35
+  );
+}
+
+/* =========================================
+   PREMIUM TICKET ACTION BUTTONS
+========================================= */
+
+.mb-ticket-actions {
+  gap: 8px;
+}
+
+.mb-view-button,
+.mb-cancel-button {
+  min-height: 34px;
+
+  border-radius: 9px;
+
+  font-size: 11px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.mb-view-button {
+  background: linear-gradient(
+    135deg,
+    #8b5cf615,
+    #6d28d910
+  );
+
+  border: 1px solid #8b5cf635;
+
+  color: #c4b5fd;
+}
+
+.mb-view-button:hover {
+  transform: translateY(-3px);
+
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #6d28d9
+  );
+
+  border-color: #a78bfa80;
+
+  color: white;
+
+  box-shadow: 0 5px 20px #8b5cf650;
+}
+
+.mb-cancel-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  background: #f43f5e20;
+
+  border-color: #fb718570;
+
+  color: #fda4af;
+
+  box-shadow: 0 5px 20px #f43f5e20;
+}
+
+.mb-view-button svg,
+.mb-cancel-button svg {
+  transition: transform 0.3s ease;
+}
+
+.mb-view-button:hover svg {
+  transform: translateX(3px);
+}
+
+.mb-cancel-button:hover:not(:disabled) svg {
+  transform: rotate(-10deg);
+}
+
+/* =========================================
+   PREMIUM PRIMARY BUTTONS
+========================================= */
+
+.mb-primary-button {
+  background: linear-gradient(
+    110deg,
+    #8b5cf6,
+    #7c3aed,
+    #9333ea,
+    #6d28d9
+  );
+
+  background-size: 250% auto;
+
+  border-radius: 10px;
+
+  border: 1px solid #a78bfa55;
+
+  box-shadow:
+    0 5px 20px #7c3aed30,
+    inset 0 1px 0 #ffffff15;
+
+  transition:
+    transform 0.3s ease,
+    background-position 0.5s ease,
+    box-shadow 0.3s ease;
+}
+
+.mb-primary-button:hover:not(:disabled) {
+  transform: translateY(-4px);
+
+  background-position: right center;
+
+  box-shadow:
+    0 8px 30px #8b5cf650,
+    0 0 25px #8b5cf620;
+}
+
+.mb-secondary-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  border-color: #a78bfa70;
+
+  box-shadow: 0 5px 20px #8b5cf620;
+}
+
+.mb-danger-button:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  box-shadow: 0 5px 25px #f43f5e40;
+}
+
+/* =========================================
+   PREMIUM DIGITAL TICKET POPUP
+========================================= */
+
+.mb-modal-overlay {
+  background: #05030bd9;
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.mb-modal {
+  border-radius: 22px;
+
+  border: 1px solid #a78bfa50;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #8b5cf61c,
+      transparent 60%
+    ),
+    linear-gradient(
+      145deg,
+      #20192d,
+      #100e17
+    );
+
+  box-shadow:
+    0 30px 90px #00000080,
+    0 0 35px #8b5cf615;
+
+  animation: mbPremiumModalIn 0.35s
+    cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.mb-modal-icon {
+  border-radius: 13px;
+
+  color: #c4b5fd;
+
+  background: #8b5cf620;
+
+  border: 1px solid #8b5cf640;
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.mb-modal-icon:hover {
+  transform: rotate(-8deg) scale(1.1);
+
+  box-shadow: 0 0 25px #8b5cf640;
+}
+
+.mb-close {
+  border-radius: 9px;
+
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease,
+    background 0.35s ease;
+}
+
+.mb-close:hover {
+  transform: rotate(90deg);
+
+  color: #fb7185;
+
+  background: #f43f5e15;
+}
+
+/* =========================================
+   ULTRA PREMIUM DIGITAL TICKET
+========================================= */
+
+.mb-digital-ticket {
+  position: relative;
+  isolation: isolate;
+
+  padding: 19px;
+
+  border-radius: 16px;
+
+  border: 1px solid #a78bfa45;
+
+  background:
+    radial-gradient(
+      ellipse at top right,
+      #8b5cf620,
+      transparent 65%
+    ),
+    linear-gradient(
+      145deg,
+      #1e172b,
+      #121019
+    );
+
+  transition:
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.mb-digital-ticket:hover {
+  border-color: #a78bfa90;
+
+  box-shadow: 0 0 30px #8b5cf620;
+}
+
+.mb-digital-heading h3 {
+  color: #e9d5ff;
+
+  font-size: 20px;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.mb-digital-heading h3:hover {
+  color: #c4b5fd;
+
+  text-shadow: 0 0 15px #8b5cf640;
+}
+
+/* Premium Ticket Cutout */
+
+.mb-ticket-divider {
+  margin: 19px -19px;
+
+  border-top-color: #a78bfa75;
+}
+
+/* =========================================
+   TICKET DETAILS INFORMATION CARDS
+========================================= */
+
+.mb-digital-grid {
+  gap: 10px;
+}
+
+.mb-digital-grid > div {
+  padding: 11px;
+
+  border-radius: 10px;
+
+  border: 1px solid #ffffff0c;
+
+  background: #ffffff03;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.mb-digital-grid > div:hover {
+  transform: translateY(-3px);
+
+  border-color: #a78bfa50;
+
+  background: #8b5cf60e;
+
+  box-shadow: 0 0 15px #8b5cf615;
+}
+
+.mb-digital-grid small {
+  font-size: 10px;
+
+  color: #a19bb5;
+
+  transition: color 0.3s ease;
+}
+
+.mb-digital-grid strong {
+  color: #ede9fe;
+
+  transition: color 0.3s ease;
+}
+
+.mb-digital-grid > div:hover strong {
+  color: #c4b5fd;
+}
+
+.mb-digital-grid .mb-digital-amount {
+  font-size: 24px;
+
+  letter-spacing: -0.6px;
+
+  background: linear-gradient(
+    90deg,
+    #ddd6fe,
+    #a78bfa,
+    #e879f9
+  );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Premium Booking Reference */
+
+.mb-ticket-id {
+  padding: 13px;
+
+  border: 1px dashed #8b5cf645;
+
+  border-radius: 10px;
+
+  background: #8b5cf608;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+.mb-ticket-id:hover {
+  border-color: #a78bfa80;
+
+  background: #8b5cf615;
+}
+
+/* =========================================
+   PREMIUM CANCELLATION MODAL
+========================================= */
+
+.mb-warning-icon {
+  border-color: #fb718550;
+
+  box-shadow: 0 0 20px #f43f5e20;
+
+  animation: mbWarningPulse 2s infinite;
+}
+
+.mb-warning-icon:hover {
+  transform: scale(1.1);
+}
+
+.mb-confirm-actions {
+  gap: 10px;
+}
+
+/* =========================================
+   PREMIUM EMPTY STATE
+========================================= */
+
+.mb-empty {
+  border-radius: 18px;
+
+  border: 1px dashed #8b5cf635;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      #8b5cf60e,
+      transparent 70%
+    ),
+    #100e17;
+
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.mb-empty:hover {
+  border-color: #a78bfa70;
+
+  box-shadow: 0 0 25px #8b5cf615;
+}
+
+.mb-empty-icon {
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.mb-empty:hover .mb-empty-icon {
+  transform: translateY(-5px)
+    rotate(-8deg);
+
+  box-shadow: 0 0 25px #8b5cf630;
+}
+
+.mb-empty h3 {
+  transition: color 0.3s ease;
+}
+
+.mb-empty:hover h3 {
+  color: #c4b5fd;
+}
+
+/* =========================================
+   PREMIUM PAGINATION
+========================================= */
+
+.mb-pagination {
+  padding-top: 15px;
+}
+
+.mb-pagination button {
+  border-radius: 9px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.mb-pagination button:hover:not(:disabled) {
+  transform: translateY(-3px);
+
+  border-color: #a78bfa70;
+
+  box-shadow: 0 5px 18px #8b5cf625;
+}
+
+.mb-pagination button:active:not(:disabled) {
+  transform: scale(0.94);
+}
+
+.my-bookings-page button:disabled {
+  opacity: 0.45;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================
+   PREMIUM ANIMATIONS
+========================================= */
+
+@keyframes mbGradientFlow {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes mbPremiumModalIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes mbStatusPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #fbbf2440;
+  }
+
+  50% {
+    box-shadow: 0 0 0 5px #fbbf2400;
+  }
+}
+
+@keyframes mbWarningPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 #f43f5e30;
+  }
+
+  50% {
+    box-shadow: 0 0 0 9px #f43f5e00;
+  }
+}
+
+/* =========================================
+   TABLET RESPONSIVE
+========================================= */
+
+@media (max-width: 1000px) {
+  .mb-summary-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+  }
+
+  .mb-booking-grid {
+    gap: 14px;
+  }
+
+  .mb-hero {
+    padding: 22px;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
+@media (max-width: 600px) {
+  .mb-hero {
+    min-height: auto;
+
+    padding: 18px;
+
+    border-radius: 15px;
+  }
+
+  .mb-hero h1 {
+    font-size: 26px;
+  }
+
+  .mb-hero p {
+    font-size: 12px;
+  }
+
+  .mb-summary-grid {
+    gap: 9px;
+  }
+
+  .mb-stat-card {
+    min-height: 72px;
+
+    padding: 10px;
+
+    gap: 8px;
+
+    border-radius: 11px;
+  }
+
+  .mb-stat-icon {
+    width: 33px;
+    height: 33px;
+
+    border-radius: 9px;
+  }
+
+  .mb-stat-content strong {
+    font-size: 22px;
+  }
+
+  .mb-stat-content span {
+    font-size: 10px;
+  }
+
+  .mb-booking-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mb-ticket-card {
+    border-radius: 13px;
+  }
+
+  .mb-ticket-content {
+    padding: 11px;
+  }
+
+  .mb-ticket-image {
+    width: 90px;
+  }
+
+  .mb-ticket-heading h3 {
+    font-size: 14px;
+  }
+
+  .mb-ticket-information {
+    gap: 5px;
+  }
+
+  .mb-ticket-information > div {
+    padding: 5px 6px;
+
+    font-size: 9px;
+  }
+
+  .mb-ticket-price strong {
+    font-size: 19px;
+  }
+
+  .mb-modal {
+    padding: 17px;
+
+    border-radius: 17px;
+  }
+
+  .mb-digital-ticket {
+    padding: 14px;
+  }
+
+  .mb-ticket-divider {
+    margin-left: -14px;
+    margin-right: -14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .mb-ticket-image {
+    width: 75px;
+  }
+
+  .mb-stat-card {
+    gap: 6px;
+
+    padding: 8px;
+  }
+
+  .mb-stat-icon {
+    width: 29px;
+    height: 29px;
+  }
+
+  .mb-stat-content strong {
+    font-size: 20px;
+  }
+
+  .mb-ticket-actions {
+    flex-wrap: wrap;
+  }
+
+  .mb-digital-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.my-bookings-page button:focus-visible,
+.my-bookings-page a:focus-visible,
+.my-bookings-page select:focus-visible {
+  outline: 2px solid #c4b5fd;
+
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .my-bookings-page,
+  .my-bookings-page *,
+  .my-bookings-page *::before,
+  .my-bookings-page *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .my-bookings-page *:hover {
+    transform: none !important;
+  }
+}
