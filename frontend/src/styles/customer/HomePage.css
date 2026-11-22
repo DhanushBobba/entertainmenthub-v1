@@ -2622,186 +2622,142 @@
 }
 
 /* =========================================
-   ENTERTAINHUB — CINEMATIC FULL IMAGE HERO
+   PREMIUM CINEMATIC IMAGE HERO SECTION
 ========================================= */
 
 .customer-home .ch-hero.ch-image-hero {
   position: relative;
   isolation: isolate;
-
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
   width: 100%;
-  min-height: 400px;
-
+  min-height: 420px;
   box-sizing: border-box;
-
-  padding: 36px 40px;
-  margin-bottom: 24px;
-
+  padding: 44px 48px;
+  margin-bottom: 28px;
   overflow: hidden;
-
-  border: 1px solid #8b5cf645;
-  border-radius: 22px;
-
-  background: #09090f;
-
+  border-radius: 24px;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  background:
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(124, 58, 237, 0.2),
+      transparent 60%
+    ),
+    #090812;
   box-shadow:
-    0 15px 45px #00000050,
-    0 0 30px #8b5cf610;
-
+    0 20px 50px rgba(0, 0, 0, 0.55),
+    0 0 35px rgba(139, 92, 246, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition:
-    box-shadow 0.4s ease,
-    border-color 0.4s ease;
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.customer-home .ch-hero.ch-image-hero:hover {
+  border-color: rgba(167, 139, 250, 0.75);
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.65),
+    0 0 45px rgba(139, 92, 246, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 /* =========================================
-   FULL CARD BACKGROUND IMAGE
+   FULL HERO BACKGROUND IMAGE WITH FALLBACK
 ========================================= */
 
 .ch-hero.ch-image-hero::before {
   content: "";
-
   position: absolute;
-
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   z-index: -3;
-
-  background-image: url("/images/hero-background.jpg");
-
+  background-image:
+    url("/images/hero-background.jpg"),
+    radial-gradient(ellipse at 85% 30%, rgba(124, 58, 237, 0.3) 0%, transparent 60%),
+    linear-gradient(135deg, #1c132e 0%, #0d0b16 100%);
   background-size: cover;
-  background-position: center center;
+  background-position: center 35%;
   background-repeat: no-repeat;
-
-  opacity: 1;
-
-  filter:
-    brightness(0.95)
-    contrast(1.04)
-    saturate(1.05);
-
-  transform: none;
-
+  filter: brightness(0.85) contrast(1.06) saturate(1.1);
   pointer-events: none;
-
-  transition: filter 0.5s ease;
-
-  animation: none;
+  transform: scale(1);
+  transition:
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.8s ease;
 }
 
-/* Improve Image Brightness On Hover */
-
 .ch-hero.ch-image-hero:hover::before {
-  filter:
-    brightness(1.08)
-    contrast(1.04)
-    saturate(1.1);
-
-  transform: none;
+  transform: scale(1.035);
+  filter: brightness(0.96) contrast(1.08) saturate(1.18);
 }
 
 /* =========================================
-   CINEMATIC IMAGE BLENDING
+   CINEMATIC MULTI-LAYERED OVERLAY
 ========================================= */
 
 .ch-image-hero .ch-hero-overlay {
   position: absolute;
-
   inset: 0;
-
   width: 100%;
   height: 100%;
-
   z-index: -2;
-
   pointer-events: none;
-
   background:
-
-    /* Left Side Text Readability */
-
+    /* Left Side Reading Scrim */
     linear-gradient(
       90deg,
-      rgba(8, 6, 15, 0.98) 0%,
-      rgba(8, 6, 15, 0.91) 20%,
-      rgba(8, 6, 15, 0.72) 38%,
-      rgba(8, 6, 15, 0.35) 58%,
-      rgba(8, 6, 15, 0.08) 80%,
+      rgba(9, 8, 18, 0.98) 0%,
+      rgba(9, 8, 18, 0.92) 28%,
+      rgba(9, 8, 18, 0.72) 48%,
+      rgba(9, 8, 18, 0.35) 70%,
+      rgba(9, 8, 18, 0.1) 88%,
       transparent 100%
     ),
-
-    /* Bottom Cinematic Gradient */
-
+    /* Bottom Cinematic Darkening */
     linear-gradient(
       0deg,
-      rgba(9, 9, 15, 0.9) 0%,
-      rgba(9, 9, 15, 0.15) 35%,
-      transparent 65%
+      rgba(9, 8, 18, 0.95) 0%,
+      rgba(9, 8, 18, 0.3) 30%,
+      transparent 60%
     ),
-
-    /* Purple Ambient Lighting */
-
+    /* Top Left Purple Ambient Glow */
     radial-gradient(
-      ellipse at top left,
-      rgba(124, 58, 237, 0.22),
-      transparent 65%
+      circle at 10% 20%,
+      rgba(139, 92, 246, 0.24),
+      transparent 55%
     );
 }
 
 /* =========================================
-   ANIMATED PREMIUM BORDER
+   ANIMATED TOP LIGHTBAR
 ========================================= */
 
 .ch-hero.ch-image-hero::after {
   content: "";
-
   position: absolute;
-
   top: 0;
-  left: 10%;
-  right: 10%;
-
-  width: auto;
+  left: 8%;
+  right: 8%;
   height: 2px;
-
   z-index: 5;
-
-  border-radius: 20px;
-
+  border-radius: 9999px;
   pointer-events: none;
-
   background: linear-gradient(
     90deg,
     transparent,
-    #8b5cf6,
-    #d946ef,
-    #c4b5fd,
-    #8b5cf6,
+    rgba(139, 92, 246, 0.8),
+    rgba(217, 70, 239, 0.9),
+    rgba(196, 181, 253, 0.95),
+    rgba(139, 92, 246, 0.8),
     transparent
   );
-
   background-size: 200% auto;
-
-  opacity: 0.65;
-
-  animation:
-    chCinematicBorder 5s linear infinite;
-
+  opacity: 0.75;
+  animation: chCinematicBorder 6s linear infinite;
   transition: opacity 0.35s ease;
-}
-
-.ch-hero.ch-image-hero:hover {
-  border-color: #a78bfa90;
-
-  box-shadow:
-    0 15px 50px #00000060,
-    0 0 35px #8b5cf625;
 }
 
 .ch-hero.ch-image-hero:hover::after {
@@ -2809,92 +2765,74 @@
 }
 
 /* =========================================
-   PREMIUM HERO CONTENT
+   HERO CONTENT WRAPPER
 ========================================= */
 
 .ch-image-hero .ch-hero-content {
   position: relative;
-
   z-index: 2;
-
-  flex: 0 1 590px;
-
   width: 100%;
-  max-width: 590px;
+  max-width: 620px;
   min-width: 0;
-
   margin: 0;
-
   text-align: left;
-
-  animation:
-    chCinematicContentIn 0.75s ease backwards;
+  animation: chSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) backwards;
 }
 
 /* =========================================
-   ENTERTAINMENT BADGE
+   DESTINATION BADGE
 ========================================= */
 
 .ch-image-hero .ch-hero-badge {
   display: inline-flex;
-
   align-items: center;
-  gap: 7px;
-
-  padding: 8px 13px;
-
-  border: 1px solid #a78bfa50;
-
-  border-radius: 30px;
-
-  background: #8b5cf620;
-
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  border: 1px solid rgba(167, 139, 250, 0.45);
+  background: rgba(139, 92, 246, 0.16);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   color: #ddd6fe;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  letter-spacing: 1px;
-
+  font-size: 10.5px;
+  font-weight: 750;
+  letter-spacing: 1.4px;
+  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.22);
   transition:
-    transform 0.3s ease,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
     box-shadow 0.3s ease,
     background 0.3s ease;
 }
 
 .ch-image-hero .ch-hero-badge:hover {
-  transform: translateY(-3px);
-
-  background: #8b5cf630;
-
-  box-shadow: 0 0 25px #8b5cf640;
+  transform: translateY(-2px);
+  background: rgba(139, 92, 246, 0.28);
+  border-color: #c4b5fd;
+  box-shadow: 0 6px 24px rgba(139, 92, 246, 0.45);
+  color: #ffffff;
 }
 
 .ch-image-hero .ch-hero-badge svg {
+  color: #fbbf24;
   transition: transform 0.4s ease;
 }
 
 .ch-image-hero .ch-hero-badge:hover svg {
-  transform: rotate(20deg) scale(1.15);
+  transform: rotate(20deg) scale(1.2);
 }
 
 /* =========================================
-   CUSTOMER WELCOME MESSAGE
+   WELCOME GREETING
 ========================================= */
 
 .ch-image-hero .ch-welcome {
   margin: 18px 0 8px;
-
   color: #c4b5fd;
-
-  font-size: 13px;
-  font-weight: 500;
-
-  text-shadow: 0 2px 10px #000000;
-
+  font-size: 14px;
+  font-weight: 550;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
   transition:
     color 0.3s ease,
     transform 0.3s ease;
@@ -2902,7 +2840,6 @@
 
 .ch-image-hero .ch-welcome:hover {
   color: #ffffff;
-
   transform: translateX(3px);
 }
 
@@ -2911,53 +2848,41 @@
 ========================================= */
 
 .ch-image-hero h1 {
-  margin: 10px 0 16px;
-
-  font-size: clamp(34px, 4.3vw, 64px);
-
-  font-weight: 800;
-
+  margin: 6px 0 16px;
+  font-size: clamp(34px, 4.2vw, 58px);
+  font-weight: 850;
   line-height: 1.08;
-
   letter-spacing: -2px;
-
   color: #ffffff;
-
   text-shadow:
-    0 5px 25px #00000090,
-    0 0 35px #00000050;
-
+    0 4px 25px rgba(0, 0, 0, 0.85),
+    0 0 35px rgba(139, 92, 246, 0.25);
   transition: text-shadow 0.35s ease;
 }
 
 .ch-image-hero h1:hover {
   text-shadow:
-    0 0 30px #8b5cf650,
-    0 5px 25px #00000090;
+    0 6px 30px rgba(0, 0, 0, 0.95),
+    0 0 45px rgba(167, 139, 250, 0.5);
 }
 
 /* Animated Gradient Enjoy Text */
 
 .ch-image-hero h1 span {
   display: inline-block;
-
   background: linear-gradient(
     90deg,
-    #c4b5fd,
-    #a78bfa,
-    #e879f9,
-    #c4b5fd
+    #c4b5fd 0%,
+    #a78bfa 25%,
+    #f472b6 50%,
+    #c084fc 75%,
+    #c4b5fd 100%
   );
-
   background-size: 250% auto;
-
   background-clip: text;
   -webkit-background-clip: text;
-
   -webkit-text-fill-color: transparent;
-
-  animation:
-    chCinematicBorder 6s linear infinite;
+  animation: chGradientFlow 6s linear infinite;
 }
 
 /* =========================================
@@ -2965,23 +2890,17 @@
 ========================================= */
 
 .ch-image-hero .ch-hero-description {
-  max-width: 470px;
-
-  margin: 0 0 25px;
-
+  max-width: 480px;
+  margin: 0 0 26px;
   font-size: 14px;
-
-  line-height: 1.8;
-
-  color: #d4cde3;
-
-  text-shadow: 0 2px 10px #00000090;
-
+  line-height: 1.75;
+  color: #cbd5e1;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
   transition: color 0.3s ease;
 }
 
 .ch-image-hero .ch-hero-description:hover {
-  color: #ffffff;
+  color: #f1f5f9;
 }
 
 /* =========================================
@@ -2990,11 +2909,8 @@
 
 .ch-image-hero .ch-hero-actions {
   display: flex;
-
   align-items: center;
-
   flex-wrap: wrap;
-
   gap: 12px;
 }
 
@@ -3002,138 +2918,126 @@
 
 .ch-image-hero .ch-primary-button {
   position: relative;
-
   overflow: hidden;
-
   min-height: 44px;
-
-  padding: 12px 18px;
-
-  border-radius: 10px;
-
-  border: 1px solid #a78bfa60;
-
+  padding: 12px 20px;
+  border-radius: 11px;
+  border: 1px solid rgba(167, 139, 250, 0.6);
   background: linear-gradient(
-    110deg,
-    #8b5cf6,
-    #7c3aed,
-    #4f46e5
+    115deg,
+    #9333ea 0%,
+    #7c3aed 45%,
+    #4f46e5 100%
   );
-
   background-size: 200% auto;
-
-  color: white;
-
-  font-size: 12px;
+  color: #ffffff;
+  font-size: 13px;
   font-weight: 650;
-
-  box-shadow: 0 5px 25px #7c3aed40;
-
+  text-decoration: none;
+  box-shadow:
+    0 6px 24px rgba(124, 58, 237, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease,
     background-position 0.5s ease;
 }
 
 .ch-image-hero .ch-primary-button:hover {
-  transform: translateY(-4px);
-
+  transform: translateY(-3px);
   background-position: right center;
-
   box-shadow:
-    0 8px 30px #8b5cf670,
-    0 0 20px #8b5cf625;
+    0 10px 32px rgba(139, 92, 246, 0.7),
+    0 0 25px rgba(139, 92, 246, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
-/* Button Reflection */
+.ch-image-hero .ch-primary-button:active {
+  transform: scale(0.97);
+}
+
+/* Shimmer Light Reflection Across Button */
 
 .ch-image-hero .ch-primary-button::after {
   content: "";
-
   position: absolute;
-
   top: 0;
   bottom: 0;
-  left: -100%;
-
+  left: -120%;
   width: 60%;
-
   background: linear-gradient(
     90deg,
     transparent,
-    #ffffff30,
+    rgba(255, 255, 255, 0.35),
     transparent
   );
-
   transform: skewX(-25deg);
-
   pointer-events: none;
-
-  transition: left 0.7s ease;
+  transition: left 0.75s ease;
 }
 
 .ch-image-hero .ch-primary-button:hover::after {
-  left: 150%;
+  left: 160%;
 }
 
 /* Secondary Explore Events Button */
 
 .ch-image-hero .ch-secondary-button {
   min-height: 44px;
-
-  padding: 12px 18px;
-
-  border-radius: 10px;
-  border: 1px solid #ffffff35;
-
-  background: #ffffff0d;
-
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
+  padding: 12px 20px;
+  border-radius: 11px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   color: #e9d5ff;
-
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 650;
-
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   transition:
-    transform 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease,
-    background 0.35s ease;
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .ch-image-hero .ch-secondary-button:hover {
-  transform: translateY(-4px);
-
-  background: #8b5cf625;
-
-  border-color: #a78bfa80;
-
-  box-shadow: 0 5px 25px #8b5cf635;
+  transform: translateY(-3px);
+  background: rgba(139, 92, 246, 0.22);
+  border-color: rgba(167, 139, 250, 0.7);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.3);
+  color: #ffffff;
 }
 
-/* Animated Button Icons */
+.ch-image-hero .ch-secondary-button:active {
+  transform: scale(0.97);
+}
+
+/* Button Icon Animations */
 
 .ch-image-hero .ch-primary-button svg,
 .ch-image-hero .ch-secondary-button svg {
-  transition: transform 0.35s ease;
+  transition: transform 0.3s ease;
 }
 
-.ch-image-hero .ch-primary-button:hover svg,
+.ch-image-hero .ch-primary-button:hover svg {
+  transform: translateX(2px) scale(1.1);
+}
+
 .ch-image-hero .ch-secondary-button:hover svg {
   transform: scale(1.12);
 }
 
 /* =========================================
-   PREMIUM ANIMATIONS
+   ANIMATION KEYFRAMES
 ========================================= */
 
 @keyframes chCinematicBorder {
   from {
     background-position: 0% center;
   }
-
   to {
     background-position: 200% center;
   }
@@ -3142,59 +3046,54 @@
 @keyframes chCinematicContentIn {
   from {
     opacity: 0;
-
     transform: translateY(22px);
   }
-
   to {
     opacity: 1;
-
     transform: translateY(0);
   }
 }
 
 /* =========================================
-   TABLET RESPONSIVE
+   TABLET RESPONSIVE (MAX-WIDTH: 900PX)
 ========================================= */
 
 @media (max-width: 900px) {
   .customer-home .ch-hero.ch-image-hero {
-    min-height: 350px;
-
-    padding: 28px;
+    min-height: 360px;
+    padding: 32px;
   }
 
   .ch-image-hero .ch-hero-content {
-    max-width: 480px;
+    max-width: 500px;
   }
 
   .ch-image-hero h1 {
-    font-size: 44px;
+    font-size: 42px;
   }
 }
 
 /* =========================================
-   MOBILE RESPONSIVE
+   MOBILE RESPONSIVE (MAX-WIDTH: 600PX)
 ========================================= */
 
 @media (max-width: 600px) {
   .customer-home .ch-hero.ch-image-hero {
-    min-height: 355px;
-
-    padding: 22px;
-
-    border-radius: 16px;
+    min-height: 340px;
+    padding: 24px 20px;
+    border-radius: 18px;
   }
 
   .ch-hero.ch-image-hero::before {
-    background-position: 65% center;
+    background-position: 70% center;
   }
 
   .ch-image-hero .ch-hero-overlay {
     background: linear-gradient(
       90deg,
-      #09090fee,
-      #09090f85
+      rgba(9, 8, 18, 0.96) 0%,
+      rgba(9, 8, 18, 0.88) 55%,
+      rgba(9, 8, 18, 0.6) 100%
     );
   }
 
@@ -3203,24 +3102,25 @@
   }
 
   .ch-image-hero h1 {
-    font-size: 36px;
-
-    letter-spacing: -1px;
+    font-size: 32px;
+    letter-spacing: -1.2px;
   }
 
   .ch-image-hero .ch-hero-description {
-    font-size: 12px;
+    font-size: 13px;
+    margin-bottom: 20px;
   }
 
   .ch-image-hero .ch-hero-actions {
-    gap: 9px;
+    gap: 10px;
   }
 
   .ch-image-hero .ch-primary-button,
   .ch-image-hero .ch-secondary-button {
-    padding: 11px 13px;
-
-    font-size: 11px;
+    padding: 11px 16px;
+    font-size: 12px;
+    flex: 1 1 auto;
+    justify-content: center;
   }
 }
 
